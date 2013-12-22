@@ -1,13 +1,20 @@
-CC = gcc
-CFLAGS = -O3 -std=c99 -ggdb -Wall -Werror -pedantic
-CFLAGS += -lncurses #$(shell sdl2-config --cflags)
+CC = g++
+CFLAGS += -std=c++11 -ggdb -Wall -Werror -pedantic
+CFLAGS += -lncurses -lnoise #$(shell sdl2-config --cflags)
 LDLIBS = # $(shell sdl2-config --libs)
 
-SOURCES = $(shell find -name "*.c")
-OBJECTS = $(SOURCES:.c=.o)
-EXE = main
+SOURCES = $(shell find -name "*.cpp")
+OBJECTS = $(SOURCES:.cpp=.o)
 
-all : $(EXE)
+all : main
 
-$(EXE) : main.c
+main : $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDLIBS) $^ -o $@
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) $(LDLIBS) $< -c
+
+.phony : clean
+
+clean :
+	rm -f *.o
