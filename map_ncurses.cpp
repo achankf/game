@@ -8,14 +8,17 @@ void MapNCurses::render() {
 		for (int j = 0; j < MAP_WIDTH; j++) {
 
 			double val = this->getBaseTile(i,j);
-			int k = i + j;
+			//int k = i + j;
+			int k = i;
 
 			int colour;
 			(void)colour;
-			if (val < -0.2) colour = BLUE;
+			if (val < -0.1) colour = BLUE;
 			else if (val < 0) colour = CYAN;
-			else if (val < 1) colour = GREEN;
-			else colour = LIGHT_GREEN;
+			else if (val < 0.25) colour = YELLOW;
+			else if (val < 0.6) colour = GREEN;
+			else if (val < 0.9) colour = RED;
+			else colour = WHITE;
 
 			attron(COLOR_PAIR(colour));
 			mvwprintw(stdscr, j, k, "%c ", 254);

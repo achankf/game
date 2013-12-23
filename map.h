@@ -8,7 +8,7 @@ namespace Rendering {
 
 class Renderer;
 
-enum {MAP_LENGTH = 64, MAP_WIDTH = 32};
+enum {MAP_LENGTH = 128, MAP_WIDTH = 40};
 
 class Map : public Renderable {
 	noise::module::Perlin perlin;
