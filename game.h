@@ -2,21 +2,23 @@
 #define _game_h_
 
 #include <random>
-#include "renderable.h"
+#include "creature.h"
+#include "gamedb.h"
 #include "randgen.h"
+#include "type.h"
 
-namespace Rendering {
 class Map;
-class Renderer;
 
-class Game : public Renderable {
-	RandGen<int> rando;
+class Game {
+protected:
+	RandGen<int> &rando;
+	GameDB db;
 
 public:
-	Game(int argc, char **argv, Renderer &renderer) : Renderable(renderer) {}
-	int next_random() {
-		return rando.next();
-	}
+	Game(int argc, char **argv, RandGen<int> &rando, Map &map);
+	virtual ~Game() {}
+
+	id_type get_userid(const char *uid);
 };
-}
+
 #endif

@@ -11,7 +11,6 @@ class Renderable {
 public:
 	Renderable(Renderer &renderer) : renderer(renderer) {}
 	virtual ~Renderable() {}
-
 	virtual void render() = 0;
 };
 

@@ -11,7 +11,7 @@ RendererNCurses::RendererNCurses() {
 	initscr();
 	if(has_colors() == FALSE) {
 		endwin();
-		std::cout << "Your terminal does not support color" << std::endl;
+		std::cerr << "Your terminal does not support color" << std::endl;
 		throw std::bad_alloc();
 	}
 
@@ -23,7 +23,7 @@ RendererNCurses::RendererNCurses() {
 	rv |= init_pair(YELLOW, COLOR_YELLOW, COLOR_BLACK);
 	rv |= init_pair(WHITE, COLOR_WHITE, COLOR_BLACK);
 	if (rv) {
-		std::cout << "Something is wrong with the colours" << std::endl;
+		std::cerr << "Something is wrong with the colours" << std::endl;
 		throw std::bad_alloc();
 	}
 }

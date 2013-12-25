@@ -4,19 +4,34 @@
 using namespace Rendering;
 
 void MapNCurses::render() {
-	for (int i = 0; i < MAP_LENGTH; i++) {
-		for (int j = 0; j < MAP_WIDTH; j++) {
+	for (int i = 0; i < this->getLength(); i++) {
+		for (int j = 0; j < this->getWidth(); j++) {
 
-			double val = this->getBaseTile(i,j);
+			double val = this->getBaseTile(0.5 + i, 0.5 + j);
+			RendererNCurses::ColourNCurses colour;
 
-			int colour;
-
-			if (val < -0.1) colour = BLUE;
-			else if (val < 0) colour = CYAN;
-			else if (val < 0.25) colour = YELLOW;
-			else if (val < 0.6) colour = GREEN;
-			else if (val < 0.9) colour = RED;
-			else colour = WHITE;
+			switch (this->baseToTile(val)) {
+			case DEEP:
+				colour = RendererNCurses::BLUE;
+				break;
+			case SHALLOW:
+				colour = RendererNCurses::CYAN;
+				break;
+			case PLAIN:
+				colour = RendererNCurses::YELLOW;
+				break;
+			case GRASS:
+				colour = RendererNCurses::GREEN;
+				break;
+			case HILL:
+				colour = RendererNCurses::RED;
+				break;
+			case SNOW:
+				colour = RendererNCurses::WHITE;
+				break;
+			default:
+				assert("Invalid Tile Type" == nullptr); // aka fails
+			}
 
 			attron(COLOR_PAIR(colour));
 			mvwprintw(stdscr, j, i, "%c ", 254);

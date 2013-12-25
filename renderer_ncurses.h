@@ -5,11 +5,10 @@
 
 namespace Rendering {
 
-enum { GREEN = 1, BLUE, RED, CYAN, WHITE, YELLOW};
-
 class RendererNCurses : public Renderer {
 
 public:
+	enum ColourNCurses {GREEN = 1, BLUE, RED, CYAN, WHITE, YELLOW};
 	RendererNCurses();
 	virtual ~RendererNCurses();
 };
