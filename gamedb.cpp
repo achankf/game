@@ -34,7 +34,11 @@ GameDB::GameDB(const char *file)
 		int rv = sqlite3_prepare_v2(this->get_handle(), this->mapping[i], length, &this->stmts[i], nullptr);
 
 		/* cannot initialize one of the statements */
-		if (rv) finalize_all(this->stmts);
+		if (rv) {
+			finalize_all(this->stmts);
+			std::cerr << "Cannot initialize queries" << std::endl;
+			throw std::exception();
+		}
 	}
 }
 
@@ -72,14 +76,16 @@ id_type GameDB::get_userid(const char *uid) {
 
 	len++; // position of null character
 
-	this->reprepare(SQL::UID_TO_PID);
+	int rv = this->reprepare(SQL::UID_TO_PID);
+	if (rv) throw std::exception();
 
 	SQLite3Transaction trans(*this);
 
 	sqlite3_stmt *stmt = this->stmts[SQL::UID_TO_PID];
-	sqlite3_bind_text(stmt, 1, uid, len, SQLITE_TRANSIENT);
+	rv = sqlite3_bind_text(stmt, 1, uid, len, SQLITE_TRANSIENT);
+	if (rv) throw std::exception();
 
-	int rv = sqlite3_step(stmt);
+	rv = sqlite3_step(stmt);
 
 	if (rv == SQLITE_ROW) return sqlite3_column_int(stmt, 0);
 

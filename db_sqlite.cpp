@@ -52,6 +52,7 @@ SQLite3Transaction::~SQLite3Transaction() {
 }
 
 SQLite3Database::SQLite3Database(const char *file) {
+
 	int rv = sqlite3_open(file, &this->db);
 	if (rv) {
 		std::cerr << "Cannot open database file (reason:" << rv << ')' << std::endl;
