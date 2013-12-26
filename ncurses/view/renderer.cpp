@@ -3,7 +3,7 @@
 #include "ncurses/model/map.h"
 #include <ncurses.h>
 #include <iostream>
-using namespace Rendering;
+using namespace NCurses::View;
 
 RendererNCurses::RendererNCurses() {
 	int rv = 0;

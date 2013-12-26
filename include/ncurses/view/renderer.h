@@ -3,7 +3,8 @@
 
 #include "../../base/view/renderer.h"
 
-namespace Rendering {
+namespace NCurses{
+namespace View {
 
 class RendererNCurses : public ::Base::View::Renderer {
 
@@ -13,5 +14,6 @@ public:
 	virtual ~RendererNCurses();
 };
 
+}
 }
 #endif

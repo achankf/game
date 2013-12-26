@@ -19,10 +19,11 @@ using namespace std;
 RandGen<int> rando;
 
 void runNCurses(int argc, char **argv) {
-	Rendering::RendererNCurses renderer;
-	Rendering::MapNCurses map(renderer, rando.next());
-	Rendering::GameNCurses game(argc, argv, rando, renderer, map);
-	NCurses::Control::Controller controller(game, map, renderer);
+	using namespace NCurses;
+	View::RendererNCurses renderer;
+	Model::MapNCurses map(renderer, rando.next());
+	Model::GameNCurses game(argc, argv, rando, renderer, map);
+	Control::Controller controller(game, map, renderer);
 
 	renderer.set(Base::View::MAP, map);
 	renderer.set(Base::View::GAME, game);

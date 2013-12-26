@@ -4,7 +4,8 @@
 #include "../../base/model/map.h"
 #include "../../base/view/renderable.h"
 
-namespace Rendering {
+namespace NCurses{
+namespace Model {
 
 class MapNCurses : public ::Base::Model::Map, public ::Base::View::Renderable {
 public:
@@ -12,5 +13,6 @@ public:
 	void render();
 };
 
+}
 }
 #endif

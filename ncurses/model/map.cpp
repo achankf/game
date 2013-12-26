@@ -2,10 +2,10 @@
 #include "ncurses/model/map.h"
 #include "ncurses/view/renderer.h"
 #include <ncurses.h>
-using namespace Rendering;
+using namespace NCurses::Model;
 
 MapNCurses::MapNCurses(Base::View::Renderer &renderer, int seed)
-	: Map(seed), Base::View::Renderable(renderer) {
+	: Base::Model::Map(seed), Base::View::Renderable(renderer) {
 }
 
 void MapNCurses::render() {
@@ -13,6 +13,8 @@ void MapNCurses::render() {
 		for (int j = 0; j < this->getWidth(); j++) {
 
 			double val = this->getBaseTile(0.5 + i, 0.5 + j);
+
+			using namespace NCurses::View;
 			RendererNCurses::ColourNCurses colour;
 
 			switch (this->baseToTile(val)) {

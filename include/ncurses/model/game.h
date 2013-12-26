@@ -5,9 +5,8 @@
 #include "../../base/view/renderable.h"
 #include "../../randgen.h"
 
-class Map;
-
-namespace Rendering {
+namespace NCurses {
+namespace Model {
 
 class GameNCurses : public Base::Model::Game, public ::Base::View::Renderable {
 
@@ -17,6 +16,7 @@ public:
 	void render();
 };
 
+}
 }
 
 #endif
