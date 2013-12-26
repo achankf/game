@@ -6,7 +6,7 @@
 
 namespace Rendering {
 
-class MapNCurses : public Map, public Renderable {
+class MapNCurses : public Base::Model::Map, public Renderable {
 public:
 	MapNCurses(Renderer &renderer, int seed);
 	void render();

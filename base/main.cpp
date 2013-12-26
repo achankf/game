@@ -33,7 +33,7 @@ void runNull(int argc, char **argv) {
 	Rendering::RendererNull renderer;
 	Rendering::MapNull map(renderer, rando.next());
 	Rendering::GameNull game(argc, argv, rando, renderer, map);
-	Player player(game, "alfred");
+	Base::Model::Player player(game, "alfred");
 	renderer.set(Rendering::GAME, game);
 
 	renderer.render_all();

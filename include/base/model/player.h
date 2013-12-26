@@ -3,6 +3,9 @@
 
 #include "../../type.h"
 
+namespace Base {
+namespace Model {
+
 class Game;
 
 class Player {
@@ -14,4 +17,6 @@ public:
 	Player(Game &game, const char *uid);
 };
 
+}
+}
 #endif

@@ -3,6 +3,9 @@
 
 #include <noise/noise.h>
 
+namespace Base {
+namespace Model {
+
 class Map {
 	noise::module::Perlin perlin;
 	const int length, width;
@@ -18,4 +21,7 @@ public:
 	int getWidth();
 	TileType baseToTile(double val);
 };
+
+}
+}
 #endif

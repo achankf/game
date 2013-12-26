@@ -12,7 +12,7 @@ namespace Control {
 class Controller : public ::Base::Control::Controller {
 
 public:
-	Controller(Game &game, Map &map, Rendering::Renderer &renderer);
+	Controller(::Base::Model::Game &game, ::Base::Model::Map &map, ::Rendering::Renderer &renderer);
 	void event_loop();
 };
 

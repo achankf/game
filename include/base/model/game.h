@@ -6,6 +6,9 @@
 #include "../../randgen.h"
 #include "../../type.h"
 
+namespace Base {
+namespace Model {
+
 class Map;
 
 class Game {
@@ -20,4 +23,6 @@ public:
 	id_type get_userid(const char *uid);
 };
 
+}
+}
 #endif

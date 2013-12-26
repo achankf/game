@@ -2,6 +2,7 @@
 #include <iostream>
 #include "base/model/game.h"
 #include "base/model/player.h"
+using namespace Base::Model;
 
 Player::Player(Game &game, const char *uid)
 	: game(game), pid(game.get_userid(uid)) {

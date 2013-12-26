@@ -6,6 +6,7 @@
 #include "base/model/game.h"
 #include "base/model/map.h"
 #include "gamedb.h"
+using namespace Base::Model;
 
 Game::Game(int argc, char **argv, RandGen<int> &rando, Map &map)
 	: rando(rando), db("save.db") {

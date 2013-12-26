@@ -8,10 +8,10 @@ class Map;
 
 namespace Rendering {
 
-class GameNull : public Game, public Renderable {
+class GameNull : public ::Base::Model::Game, public Renderable {
 
 public:
-	GameNull(int argc, char **argv, RandGen<int> &rando, Renderer &renderer, Map &map) :
+	GameNull(int argc, char **argv, RandGen<int> &rando, Renderer &renderer, ::Base::Model::Map &map) :
 		Game(argc, argv, rando, map), Renderable(renderer) {
 	}
 
