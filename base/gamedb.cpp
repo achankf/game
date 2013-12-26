@@ -5,9 +5,9 @@
 #include "invalid_arg.h"
 
 namespace SQL {
-const char *player_exists = "select exists (select * from player where uid = ?)";
+//const char *player_exists = "select exists (select * from player where uid = ?)";
 const char *new_player = "insert into player (uid) values (?)";
-const char *new_creature = "insert into creature (type) values (?)";
+//const char *new_creature = "insert into creature (type) values (?)";
 const char *uid_to_pid = "select pid from player where uid = ?";
 }
 
@@ -18,9 +18,9 @@ static void finalize_all(sqlite3_stmt **stmts) {
 
 void GameDB::setup_mappings() {
 	using namespace SQL;
-	this->mapping[PLAYER_EXISTS] = player_exists;
+	//this->mapping[PLAYER_EXISTS] = player_exists;
 	this->mapping[NEW_PLAYER] = new_player;
-	this->mapping[NEW_CREATURE] = new_creature;
+	//this->mapping[NEW_CREATURE] = new_creature;
 	this->mapping[UID_TO_PID] = uid_to_pid;
 }
 
@@ -73,8 +73,6 @@ id_type GameDB::get_userid(const char *uid) {
 		std::cout << "User name longer than 10 characters" << std::endl;
 		throw InvalidArg();
 	}
-
-	len++; // position of null character
 
 	int rv = this->reprepare(SQL::UID_TO_PID);
 	if (rv) throw std::exception();

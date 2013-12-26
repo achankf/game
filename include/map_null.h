@@ -8,7 +8,7 @@ namespace Rendering {
 
 class MapNull : public Map, public Renderable {
 public:
-	MapNull(Renderer &renderer, int seed) : Map(seed), Renderable(renderer) {}
+	MapNull(Renderer &renderer, int seed);
 	void render() {}
 };
 

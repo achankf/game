@@ -13,9 +13,9 @@ main : $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDLIBS) $^ -o $@
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $(LDLIBS) $< -c
+	$(CC) $(CFLAGS) $(LDLIBS) $< -c -o $@
 
 .phony : clean
 
 clean :
-	rm -f *.o
+	rm -f $(OBJECTS)

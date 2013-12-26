@@ -11,9 +11,7 @@ class Renderer {
 	Renderable *render_lst[NUM_RANDERABLES];
 
 public:
-	void set(RenderableType type, Renderable &renderable) {
-		render_lst[type] = &renderable;
-	}
+	void set(RenderableType type, Renderable &renderable);
 	virtual ~Renderer() {}
 	void render_all();
 };

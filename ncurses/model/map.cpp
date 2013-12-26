@@ -1,7 +1,12 @@
 #include "map_ncurses.h"
+#include "renderer.h"
 #include "renderer_ncurses.h"
 #include <ncurses.h>
 using namespace Rendering;
+
+MapNCurses::MapNCurses(Renderer &renderer, int seed)
+	: Map(seed), Renderable(renderer) {
+}
 
 void MapNCurses::render() {
 	for (int i = 0; i < this->getLength(); i++) {

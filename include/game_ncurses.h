@@ -12,9 +12,7 @@ namespace Rendering {
 class GameNCurses : public Game, public Renderable {
 
 public:
-	GameNCurses(int argc, char **argv, RandGen<int> &rando, Renderer &renderer, Map &map) :
-		Game(argc, argv, rando, map), Renderable(renderer) {
-	}
+	GameNCurses(int argc, char **argv, RandGen<int> &rando, Renderer &renderer, Map &map);
 
 	void render();
 };

@@ -6,7 +6,10 @@
 
 namespace SQL {
 enum Query {
-    PLAYER_EXISTS, NEW_PLAYER, NEW_CREATURE, UID_TO_PID,
+    //PLAYER_EXISTS,
+    NEW_PLAYER,
+    //NEW_CREATURE,
+    UID_TO_PID,
     NUM_QUERIES
 };
 }
