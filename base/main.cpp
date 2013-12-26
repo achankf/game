@@ -22,7 +22,7 @@ void runNCurses(int argc, char **argv) {
 	Rendering::RendererNCurses renderer;
 	Rendering::MapNCurses map(renderer, rando.next());
 	Rendering::GameNCurses game(argc, argv, rando, renderer, map);
-	Control::NCurses controller(game, map, renderer);
+	NCurses::Control::Controller controller(game, map, renderer);
 
 	renderer.set(Rendering::MAP, map);
 	renderer.set(Rendering::GAME, game);

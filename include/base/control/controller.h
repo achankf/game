@@ -1,5 +1,5 @@
-#ifndef _controller_h_
-#define _controller_h_
+#ifndef _base_controller_h_
+#define _base_controller_h_
 
 class Game;
 class Map;
@@ -7,6 +7,7 @@ namespace Rendering {
 class Renderer;
 }
 
+namespace Base{
 namespace Control {
 
 class Controller {
@@ -22,5 +23,6 @@ public:
 	virtual void event_loop() = 0;
 };
 
+}
 }
 #endif

@@ -6,14 +6,16 @@
 #include "../model/map.h"
 #include "../view/renderer.h"
 
+namespace NCurses {
 namespace Control {
 
-class NCurses : public Controller {
+class Controller : public ::Base::Control::Controller {
 
 public:
-	NCurses(Game &game, Map &map, Rendering::Renderer &renderer);
+	Controller(Game &game, Map &map, Rendering::Renderer &renderer);
 	void event_loop();
 };
 
+}
 }
 #endif

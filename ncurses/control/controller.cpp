@@ -2,12 +2,12 @@
 #include "base/view/renderer.h"
 #include "ncurses/control/controller.h"
 
-using namespace Control;
+using namespace NCurses::Control;
 
-NCurses::NCurses(Game &game, Map &map, Rendering::Renderer &renderer)
-	: Control::Controller (game, map, renderer) {}
+Controller::Controller(Game &game, Map &map, Rendering::Renderer &renderer)
+	: ::Base::Control::Controller (game, map, renderer) {}
 
-void NCurses::event_loop() {
+void Controller::event_loop() {
 	renderer.render_all();
 	refresh();
 
