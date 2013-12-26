@@ -2,10 +2,9 @@
 #define _game_h_
 
 #include <random>
-#include "creature.h"
-#include "gamedb.h"
-#include "randgen.h"
-#include "type.h"
+#include "../gamedb.h"
+#include "../randgen.h"
+#include "../type.h"
 
 class Map;
 

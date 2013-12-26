@@ -1,6 +1,6 @@
 #include <ncurses.h>
-#include "ncurses/controller.h"
-#include "renderer.h"
+#include "ncurses/control/controller.h"
+#include "view/renderer.h"
 
 using namespace Control;
 

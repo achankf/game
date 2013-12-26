@@ -2,7 +2,7 @@
 #include <random>
 #include <noise/noise.h>
 #include "randgen.h"
-#include "player.h"
+#include "model/player.h"
 #include "ncurses/mvc.h"
 #include "null/mvc.h"
 

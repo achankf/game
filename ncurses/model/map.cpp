@@ -1,6 +1,6 @@
-#include "renderer.h"
-#include "ncurses/map.h"
-#include "ncurses/renderer.h"
+#include "view/renderer.h"
+#include "ncurses/model/map.h"
+#include "ncurses/view/renderer.h"
 #include <ncurses.h>
 using namespace Rendering;
 

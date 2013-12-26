@@ -1,7 +1,7 @@
 #ifndef _renderer_ncurses_h_
 #define _renderer_ncurses_h_
 
-#include "../renderer.h"
+#include "../../view/renderer.h"
 
 namespace Rendering {
 

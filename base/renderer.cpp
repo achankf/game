@@ -1,7 +1,7 @@
-#include "renderer.h"
-#include "game.h"
-#include "map.h"
-#include "renderable.h"
+#include "model/game.h"
+#include "model/map.h"
+#include "view/renderer.h"
+#include "view/renderable.h"
 #include "cassert"
 using namespace Rendering;
 

@@ -1,8 +1,8 @@
 #ifndef _map_ncurses_h_
 #define _map_ncurses_h_
 
-#include "../map.h"
-#include "../renderable.h"
+#include "../../model/map.h"
+#include "../../view/renderable.h"
 
 namespace Rendering {
 
