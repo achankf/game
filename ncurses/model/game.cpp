@@ -1,4 +1,4 @@
-#include "game_ncurses.h"
+#include "ncurses/game.h"
 #include "renderer.h"
 using namespace Rendering;
 

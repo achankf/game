@@ -1,10 +1,10 @@
 #ifndef _controller_ncurses_h_
 #define _controller_ncurses_h_
 
-#include "controller.h"
-#include "game.h"
-#include "map.h"
-#include "renderer.h"
+#include "../controller.h"
+#include "../game.h"
+#include "../map.h"
+#include "../renderer.h"
 
 namespace Control {
 

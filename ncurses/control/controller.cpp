@@ -1,5 +1,5 @@
 #include <ncurses.h>
-#include "controller_ncurses.h"
+#include "ncurses/controller.h"
 #include "renderer.h"
 
 using namespace Control;

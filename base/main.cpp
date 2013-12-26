@@ -3,8 +3,8 @@
 #include <noise/noise.h>
 #include "randgen.h"
 #include "player.h"
-#include "mvc_ncurses.h"
-#include "mvc_null.h"
+#include "ncurses/mvc.h"
+#include "null/mvc.h"
 
 #define S 20
 

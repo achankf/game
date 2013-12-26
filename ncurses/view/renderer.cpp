@@ -1,6 +1,6 @@
-#include "renderer_ncurses.h"
-#include "game_ncurses.h"
-#include "map_ncurses.h"
+#include "ncurses/renderer.h"
+#include "ncurses/game.h"
+#include "ncurses/map.h"
 #include <ncurses.h>
 #include <iostream>
 using namespace Rendering;
