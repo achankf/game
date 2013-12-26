@@ -6,13 +6,13 @@
 
 namespace Null {
 
-namespace View{
-	class Renderer;
+namespace View {
+class Renderer;
 }
 
 namespace Model {
 
-class Map : public ::Base::Model::Map, public ::Base::View::Renderable {
+class Map : public ::Base::Model::Map {
 public:
 	Map(::Null::View::Renderer &renderer, int seed);
 	void render();

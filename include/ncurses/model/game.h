@@ -7,15 +7,15 @@
 
 namespace NCurses {
 
-namespace View{
-	class Renderer;
+namespace View {
+class Renderer;
 }
 
 namespace Model {
 
 class Map;
 
-class Game : public Base::Model::Game, public ::Base::View::Renderable {
+class Game : public Base::Model::Game {
 
 public:
 	Game(int argc, char **argv, RandGen<int> &rando, ::NCurses::View::Renderer &renderer, ::NCurses::Model::Map &map);

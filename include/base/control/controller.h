@@ -5,7 +5,7 @@ namespace Rendering {
 class Renderer;
 }
 
-namespace Base{
+namespace Base {
 
 namespace Model {
 class Game;

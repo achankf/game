@@ -15,7 +15,11 @@ main : $(OBJECTS)
 %.o: %.cpp
 	$(CC) $(CFLAGS) $(LDLIBS) $< -c -o $@
 
-.phony : clean
+.phony : clean style
 
 clean :
 	rm -f $(OBJECTS)
+
+style :
+	find -name "*.cpp" -exec astyle --indent=tab --style=java {} \;
+	find -name "*.h" -exec astyle --indent=tab --style=java {} \;

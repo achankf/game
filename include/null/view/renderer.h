@@ -3,8 +3,8 @@
 
 #include "../../base/view/renderer.h"
 
-namespace Null{
-namespace View{
+namespace Null {
+namespace View {
 
 class Renderer : public ::Base::View::Renderer {
 

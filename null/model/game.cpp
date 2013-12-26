@@ -4,9 +4,8 @@
 using namespace Null::Model;
 
 Game::Game(int argc, char **argv, RandGen<int> &rando,
-	::Null::View::Renderer &renderer,
-	::Null::Model::Map &map) :
+           ::Null::View::Renderer &renderer,
+           ::Null::Model::Map &map) :
 
-	::Base::Model::Game(argc, argv, rando, map),
-	::Base::View::Renderable(renderer) {
+	::Base::Model::Game(argc, argv, rando, renderer, map) {
 }

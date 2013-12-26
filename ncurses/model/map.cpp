@@ -5,7 +5,7 @@
 using namespace NCurses::Model;
 
 Map::Map(NCurses::View::Renderer &renderer, int seed)
-	: Base::Model::Map(seed), Base::View::Renderable(renderer) {
+	: Base::Model::Map(renderer, seed) {
 }
 
 void Map::render() {

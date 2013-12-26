@@ -3,7 +3,7 @@
 
 #include "../../base/view/renderer.h"
 
-namespace NCurses{
+namespace NCurses {
 namespace View {
 
 class Renderer : public ::Base::View::Renderer {

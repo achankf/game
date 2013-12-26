@@ -5,10 +5,10 @@
 #include "../../base/model/map.h"
 #include "../../base/view/renderable.h"
 
-namespace NCurses{
+namespace NCurses {
 namespace Model {
 
-class Map : public ::Base::Model::Map, public ::Base::View::Renderable {
+class Map : public ::Base::Model::Map {
 public:
 	Map(::NCurses::View::Renderer &renderer, int seed);
 	void render();

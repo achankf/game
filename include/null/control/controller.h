@@ -1,9 +1,9 @@
-#ifndef _controller_ncurses_h_
-#define _controller_ncurses_h_
+#ifndef _controller_null_h_
+#define _controller_null_h_
 
 #include "../../base/control/controller.h"
 
-namespace NCurses {
+namespace Null {
 
 namespace View {
 class Renderer;
@@ -19,7 +19,7 @@ namespace Control {
 class Controller : public ::Base::Control::Controller {
 
 public:
-	Controller(::NCurses::Model::Game &game, ::NCurses::Model::Map &map, ::NCurses::View::Renderer &renderer);
+	Controller(::Null::Model::Game &game, ::Null::Model::Map &map, ::Null::View::Renderer &renderer);
 	void event_loop();
 };
 

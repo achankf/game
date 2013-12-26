@@ -3,7 +3,7 @@
 using namespace Null::Model;
 
 Map::Map(Null::View::Renderer &renderer, int seed)
-	: Base::Model::Map(seed), Base::View::Renderable(renderer) {
+	: Base::Model::Map(renderer, seed) {
 }
 
-void Map::render(){}
+void Map::render() {}

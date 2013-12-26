@@ -7,6 +7,7 @@
 #include "null/model/map.h"
 #include "null/model/game.h"
 #include "null/view/renderer.h"
+#include "null/control/controller.h"
 #include "ncurses/model/map.h"
 #include "ncurses/model/game.h"
 #include "ncurses/view/renderer.h"
@@ -18,34 +19,43 @@ using namespace std;
 
 RandGen<int> rando;
 
-void runNCurses(int argc, char **argv) {
+void run(Base::Model::Game &game,
+         Base::Model::Map &map,
+         Base::View::Renderer &renderer,
+         Base::Control::Controller &controller) {
+
+	renderer.set(Base::View::MAP, map);
+	renderer.set(Base::View::GAME, game);
+
+	Base::Model::Player player(game, "alfred");
+
+	controller.event_loop();
+}
+
+void setupNCurses(int argc, char **argv) {
 	using namespace NCurses;
 	View::Renderer renderer;
 	Model::Map map(renderer, rando.next());
 	Model::Game game(argc, argv, rando, renderer, map);
 	Control::Controller controller(game, map, renderer);
 
-	renderer.set(Base::View::MAP, map);
-	renderer.set(Base::View::GAME, game);
-	controller.event_loop();
+	run(game, map, renderer, controller);
 }
 
-void runNull(int argc, char **argv) {
+void setupNull(int argc, char **argv) {
 	using namespace Null;
 	View::Renderer renderer;
 	Model::Map map(renderer, rando.next());
 	Model::Game game(argc, argv, rando, renderer, map);
-	Base::Model::Player player(game, "alfred");
-	renderer.set(Base::View::GAME, game);
-	renderer.set(Base::View::MAP, map);
+	Control::Controller controller(game, map, renderer);
 
-	renderer.render_all();
+	run(game, map, renderer, controller);
 }
 
 int main(int argc, char **argv) {
 	try {
-		runNCurses(argc, argv);
-		runNull(argc, argv);
+		setupNCurses(argc, argv);
+		setupNull(argc, argv);
 	} catch (std::exception &ex) {
 		std::cerr << "Errors found: " << ex.what() << std::endl;
 		return 1;
