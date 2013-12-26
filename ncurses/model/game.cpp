@@ -2,8 +2,8 @@
 #include "base/view/renderer.h"
 using namespace Rendering;
 
-GameNCurses::GameNCurses(int argc, char **argv, RandGen<int> &rando, ::Rendering::Renderer &renderer, ::Base::Model::Map &map) :
-	Game(argc, argv, rando, map), Renderable(renderer) {
+GameNCurses::GameNCurses(int argc, char **argv, RandGen<int> &rando, ::Base::View::Renderer &renderer, ::Base::Model::Map &map) :
+	::Base::Model::Game(argc, argv, rando, map), ::Base::View::Renderable(renderer) {
 }
 
 void GameNCurses::render() {

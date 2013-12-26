@@ -4,7 +4,7 @@
 
 using namespace NCurses::Control;
 
-Controller::Controller(::Base::Model::Game &game, ::Base::Model::Map &map, ::Rendering::Renderer &renderer)
+Controller::Controller(::Base::Model::Game &game, ::Base::Model::Map &map, ::Base::View::Renderer &renderer)
 	: ::Base::Control::Controller (game, map, renderer) {}
 
 void Controller::event_loop() {

@@ -8,11 +8,11 @@ class Map;
 
 namespace Rendering {
 
-class GameNull : public ::Base::Model::Game, public Renderable {
+class GameNull : public ::Base::Model::Game, public ::Base::View::Renderable {
 
 public:
-	GameNull(int argc, char **argv, RandGen<int> &rando, Renderer &renderer, ::Base::Model::Map &map) :
-		Game(argc, argv, rando, map), Renderable(renderer) {
+	GameNull(int argc, char **argv, RandGen<int> &rando, ::Base::View::Renderer &renderer, ::Base::Model::Map &map) :
+		Game(argc, argv, rando, map), ::Base::View::Renderable(renderer) {
 	}
 
 	void render() {}

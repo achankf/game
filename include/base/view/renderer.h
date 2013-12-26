@@ -1,7 +1,8 @@
 #ifndef _renderer_h_
 #define _renderer_h_
 
-namespace Rendering {
+namespace Base {
+namespace View {
 
 class Renderable;
 
@@ -16,5 +17,6 @@ public:
 	void render_all();
 };
 
+}
 }
 #endif

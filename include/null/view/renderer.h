@@ -5,7 +5,7 @@
 
 namespace Rendering {
 
-class RendererNull : public Renderer {
+class RendererNull : public ::Base::View::Renderer {
 
 public:
 	RendererNull() {}

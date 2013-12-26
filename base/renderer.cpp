@@ -1,9 +1,7 @@
-#include "base/model/game.h"
-#include "base/model/map.h"
 #include "base/view/renderer.h"
 #include "base/view/renderable.h"
 #include "cassert"
-using namespace Rendering;
+using namespace Base::View;
 
 void Renderer::render_all() {
 #ifndef NDEBUG

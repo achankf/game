@@ -24,8 +24,8 @@ void runNCurses(int argc, char **argv) {
 	Rendering::GameNCurses game(argc, argv, rando, renderer, map);
 	NCurses::Control::Controller controller(game, map, renderer);
 
-	renderer.set(Rendering::MAP, map);
-	renderer.set(Rendering::GAME, game);
+	renderer.set(Base::View::MAP, map);
+	renderer.set(Base::View::GAME, game);
 	controller.event_loop();
 }
 
@@ -34,7 +34,7 @@ void runNull(int argc, char **argv) {
 	Rendering::MapNull map(renderer, rando.next());
 	Rendering::GameNull game(argc, argv, rando, renderer, map);
 	Base::Model::Player player(game, "alfred");
-	renderer.set(Rendering::GAME, game);
+	renderer.set(Base::View::GAME, game);
 
 	renderer.render_all();
 }

@@ -9,10 +9,10 @@ class Map;
 
 namespace Rendering {
 
-class GameNCurses : public Base::Model::Game, public Renderable {
+class GameNCurses : public Base::Model::Game, public ::Base::View::Renderable {
 
 public:
-	GameNCurses(int argc, char **argv, RandGen<int> &rando, Renderer &renderer, Base::Model::Map &map);
+	GameNCurses(int argc, char **argv, RandGen<int> &rando, ::Base::View::Renderer &renderer, ::Base::Model::Map &map);
 
 	void render();
 };

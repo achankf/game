@@ -5,7 +5,7 @@
 
 namespace Rendering {
 
-class RendererNCurses : public Renderer {
+class RendererNCurses : public ::Base::View::Renderer {
 
 public:
 	enum ColourNCurses {GREEN = 1, BLUE, RED, CYAN, WHITE, YELLOW};

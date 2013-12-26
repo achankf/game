@@ -4,8 +4,8 @@
 #include <ncurses.h>
 using namespace Rendering;
 
-MapNCurses::MapNCurses(Renderer &renderer, int seed)
-	: Map(seed), Renderable(renderer) {
+MapNCurses::MapNCurses(Base::View::Renderer &renderer, int seed)
+	: Map(seed), Base::View::Renderable(renderer) {
 }
 
 void MapNCurses::render() {
