@@ -3,7 +3,8 @@
 
 #include "../../base/view/renderer.h"
 
-namespace Rendering {
+namespace Null{
+namespace View{
 
 class RendererNull : public ::Base::View::Renderer {
 
@@ -12,5 +13,6 @@ public:
 	virtual ~RendererNull() {}
 };
 
+}
 }
 #endif

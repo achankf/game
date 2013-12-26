@@ -31,9 +31,10 @@ void runNCurses(int argc, char **argv) {
 }
 
 void runNull(int argc, char **argv) {
-	Rendering::RendererNull renderer;
-	Rendering::MapNull map(renderer, rando.next());
-	Rendering::GameNull game(argc, argv, rando, renderer, map);
+	using namespace Null;
+	View::RendererNull renderer;
+	Model::MapNull map(renderer, rando.next());
+	Model::GameNull game(argc, argv, rando, renderer, map);
 	Base::Model::Player player(game, "alfred");
 	renderer.set(Base::View::GAME, game);
 

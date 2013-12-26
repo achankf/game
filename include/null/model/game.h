@@ -6,7 +6,8 @@
 
 class Map;
 
-namespace Rendering {
+namespace Null {
+namespace Model {
 
 class GameNull : public ::Base::Model::Game, public ::Base::View::Renderable {
 
@@ -19,5 +20,5 @@ public:
 };
 
 }
-
+}
 #endif
