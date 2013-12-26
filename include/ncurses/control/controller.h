@@ -2,17 +2,24 @@
 #define _controller_ncurses_h_
 
 #include "../../base/control/controller.h"
-#include "../../base/model/game.h"
-#include "../model/map.h"
-#include "../view/renderer.h"
 
 namespace NCurses {
+
+namespace View{
+	class Renderer;
+}
+
+namespace Model{
+	class Map;
+	class Game;
+}
+
 namespace Control {
 
 class Controller : public ::Base::Control::Controller {
 
 public:
-	Controller(::Base::Model::Game &game, ::Base::Model::Map &map, ::Base::View::Renderer &renderer);
+	Controller(::NCurses::Model::Game &game, ::NCurses::Model::Map &map, ::NCurses::View::Renderer &renderer);
 	void event_loop();
 };
 

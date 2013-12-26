@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace NCurses::View;
 
-RendererNCurses::RendererNCurses() {
+Renderer::Renderer() {
 	int rv = 0;
 
 	initscr();
@@ -28,6 +28,6 @@ RendererNCurses::RendererNCurses() {
 	}
 }
 
-RendererNCurses::~RendererNCurses() {
+Renderer::~Renderer() {
 	endwin();
 }

@@ -4,37 +4,37 @@
 #include <ncurses.h>
 using namespace NCurses::Model;
 
-MapNCurses::MapNCurses(Base::View::Renderer &renderer, int seed)
+Map::Map(NCurses::View::Renderer &renderer, int seed)
 	: Base::Model::Map(seed), Base::View::Renderable(renderer) {
 }
 
-void MapNCurses::render() {
+void Map::render() {
 	for (int i = 0; i < this->getLength(); i++) {
 		for (int j = 0; j < this->getWidth(); j++) {
 
 			double val = this->getBaseTile(0.5 + i, 0.5 + j);
 
 			using namespace NCurses::View;
-			RendererNCurses::ColourNCurses colour;
+			Renderer::Colour colour;
 
 			switch (this->baseToTile(val)) {
 			case DEEP:
-				colour = RendererNCurses::BLUE;
+				colour = Renderer::BLUE;
 				break;
 			case SHALLOW:
-				colour = RendererNCurses::CYAN;
+				colour = Renderer::CYAN;
 				break;
 			case PLAIN:
-				colour = RendererNCurses::YELLOW;
+				colour = Renderer::YELLOW;
 				break;
 			case GRASS:
-				colour = RendererNCurses::GREEN;
+				colour = Renderer::GREEN;
 				break;
 			case HILL:
-				colour = RendererNCurses::RED;
+				colour = Renderer::RED;
 				break;
 			case SNOW:
-				colour = RendererNCurses::WHITE;
+				colour = Renderer::WHITE;
 				break;
 			default:
 				assert("Invalid Tile Type" == nullptr); // aka fails

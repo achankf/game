@@ -1,10 +1,12 @@
 #include <ncurses.h>
 #include "base/view/renderer.h"
 #include "ncurses/control/controller.h"
+#include "ncurses/model/game.h"
+#include "ncurses/model/map.h"
 
 using namespace NCurses::Control;
 
-Controller::Controller(::Base::Model::Game &game, ::Base::Model::Map &map, ::Base::View::Renderer &renderer)
+Controller::Controller(::NCurses::Model::Game &game, ::NCurses::Model::Map &map, ::NCurses::View::Renderer &renderer)
 	: ::Base::Control::Controller (game, map, renderer) {}
 
 void Controller::event_loop() {

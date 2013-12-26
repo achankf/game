@@ -6,12 +6,12 @@
 namespace NCurses{
 namespace View {
 
-class RendererNCurses : public ::Base::View::Renderer {
+class Renderer : public ::Base::View::Renderer {
 
 public:
-	enum ColourNCurses {GREEN = 1, BLUE, RED, CYAN, WHITE, YELLOW};
-	RendererNCurses();
-	virtual ~RendererNCurses();
+	enum Colour {GREEN = 1, BLUE, RED, CYAN, WHITE, YELLOW};
+	Renderer();
+	virtual ~Renderer();
 };
 
 }

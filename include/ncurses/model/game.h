@@ -6,12 +6,19 @@
 #include "../../randgen.h"
 
 namespace NCurses {
+
+namespace View{
+	class Renderer;
+}
+
 namespace Model {
 
-class GameNCurses : public Base::Model::Game, public ::Base::View::Renderable {
+class Map;
+
+class Game : public Base::Model::Game, public ::Base::View::Renderable {
 
 public:
-	GameNCurses(int argc, char **argv, RandGen<int> &rando, ::Base::View::Renderer &renderer, ::Base::Model::Map &map);
+	Game(int argc, char **argv, RandGen<int> &rando, ::NCurses::View::Renderer &renderer, ::NCurses::Model::Map &map);
 
 	void render();
 };

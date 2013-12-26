@@ -6,11 +6,11 @@
 namespace Null{
 namespace View{
 
-class RendererNull : public ::Base::View::Renderer {
+class Renderer : public ::Base::View::Renderer {
 
 public:
-	RendererNull() {}
-	virtual ~RendererNull() {}
+	Renderer () {}
+	virtual ~Renderer() {}
 };
 
 }

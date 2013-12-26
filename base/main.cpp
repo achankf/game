@@ -20,9 +20,9 @@ RandGen<int> rando;
 
 void runNCurses(int argc, char **argv) {
 	using namespace NCurses;
-	View::RendererNCurses renderer;
-	Model::MapNCurses map(renderer, rando.next());
-	Model::GameNCurses game(argc, argv, rando, renderer, map);
+	View::Renderer renderer;
+	Model::Map map(renderer, rando.next());
+	Model::Game game(argc, argv, rando, renderer, map);
 	Control::Controller controller(game, map, renderer);
 
 	renderer.set(Base::View::MAP, map);
@@ -32,11 +32,12 @@ void runNCurses(int argc, char **argv) {
 
 void runNull(int argc, char **argv) {
 	using namespace Null;
-	View::RendererNull renderer;
-	Model::MapNull map(renderer, rando.next());
-	Model::GameNull game(argc, argv, rando, renderer, map);
+	View::Renderer renderer;
+	Model::Map map(renderer, rando.next());
+	Model::Game game(argc, argv, rando, renderer, map);
 	Base::Model::Player player(game, "alfred");
 	renderer.set(Base::View::GAME, game);
+	renderer.set(Base::View::MAP, map);
 
 	renderer.render_all();
 }
@@ -44,6 +45,7 @@ void runNull(int argc, char **argv) {
 int main(int argc, char **argv) {
 	try {
 		runNCurses(argc, argv);
+		runNull(argc, argv);
 	} catch (std::exception &ex) {
 		std::cerr << "Errors found: " << ex.what() << std::endl;
 		return 1;

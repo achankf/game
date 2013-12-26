@@ -5,12 +5,17 @@
 #include "../../base/view/renderable.h"
 
 namespace Null {
+
+namespace View{
+	class Renderer;
+}
+
 namespace Model {
 
-class MapNull : public ::Base::Model::Map, public ::Base::View::Renderable {
+class Map : public ::Base::Model::Map, public ::Base::View::Renderable {
 public:
-	MapNull(::Base::View::Renderer &renderer, int seed);
-	void render() {}
+	Map(::Null::View::Renderer &renderer, int seed);
+	void render();
 };
 
 }
