@@ -2,9 +2,15 @@
 #include <random>
 #include <noise/noise.h>
 #include "randgen.h"
-#include "model/player.h"
-#include "ncurses/mvc.h"
-#include "null/mvc.h"
+#include "base/model/player.h"
+#include "base/view/renderer.h"
+#include "null/model/map.h"
+#include "null/model/game.h"
+#include "null/view/renderer.h"
+#include "ncurses/model/map.h"
+#include "ncurses/model/game.h"
+#include "ncurses/view/renderer.h"
+#include "ncurses/control/controller.h"
 
 #define S 20
 

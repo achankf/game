@@ -1,8 +1,8 @@
 #ifndef _map_null_h_
 #define _map_null_h_
 
-#include "../../model/map.h"
-#include "../../view/renderable.h"
+#include "../../base/model/map.h"
+#include "../../base/view/renderable.h"
 
 namespace Rendering {
 

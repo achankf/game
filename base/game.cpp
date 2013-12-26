@@ -3,8 +3,8 @@
 #include <fstream>
 #include <cstdio>
 #include <string>
-#include "model/game.h"
-#include "model/map.h"
+#include "base/model/game.h"
+#include "base/model/map.h"
 #include "gamedb.h"
 
 Game::Game(int argc, char **argv, RandGen<int> &rando, Map &map)

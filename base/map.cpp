@@ -1,4 +1,4 @@
-#include "model/map.h"
+#include "base/model/map.h"
 
 Map::Map(int seed, int length, int width) : length(length), width(width) {
 	perlin.SetSeed(seed);

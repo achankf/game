@@ -1,5 +1,5 @@
+#include "base/view/renderer.h"
 #include "null/model/map.h"
-#include "view/renderer.h"
 using namespace Rendering;
 
 MapNull::MapNull(Renderer &renderer, int seed)

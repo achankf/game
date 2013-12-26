@@ -1,7 +1,7 @@
 #include <cstring>
 #include <iostream>
-#include "model/game.h"
-#include "model/player.h"
+#include "base/model/game.h"
+#include "base/model/player.h"
 
 Player::Player(Game &game, const char *uid)
 	: game(game), pid(game.get_userid(uid)) {

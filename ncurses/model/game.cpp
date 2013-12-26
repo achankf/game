@@ -1,5 +1,5 @@
 #include "ncurses/model/game.h"
-#include "view/renderer.h"
+#include "base/view/renderer.h"
 using namespace Rendering;
 
 GameNCurses::GameNCurses(int argc, char **argv, RandGen<int> &rando, Renderer &renderer, Map &map) :

@@ -1,8 +1,8 @@
 #ifndef _game_ncurses_h_
 #define _game_ncurses_h_
 
-#include "../../model/game.h"
-#include "../../view/renderable.h"
+#include "../../base/model/game.h"
+#include "../../base/view/renderable.h"
 #include "../../randgen.h"
 
 class Map;

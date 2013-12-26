@@ -1,7 +1,8 @@
 #ifndef _game_null_h_
 #define _game_null_h_
 
-#include "mvc.h"
+#include "../../base/model/game.h"
+#include "../../base/view/renderable.h"
 
 class Map;
 

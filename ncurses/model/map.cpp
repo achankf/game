@@ -1,4 +1,4 @@
-#include "view/renderer.h"
+#include "base/view/renderer.h"
 #include "ncurses/model/map.h"
 #include "ncurses/view/renderer.h"
 #include <ncurses.h>

@@ -1,7 +1,7 @@
 #ifndef _renderer_null_h_
 #define _renderer_null_h_
 
-#include "../../view/renderer.h"
+#include "../../base/view/renderer.h"
 
 namespace Rendering {
 

@@ -1,7 +1,7 @@
 #ifndef _player_h_
 #define _player_h_
 
-#include "type.h"
+#include "../../type.h"
 
 class Game;
 

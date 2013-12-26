@@ -1,8 +1,8 @@
 #ifndef _controller_ncurses_h_
 #define _controller_ncurses_h_
 
-#include "../../control/controller.h"
-#include "../../model/game.h"
+#include "../../base/control/controller.h"
+#include "../../base/model/game.h"
 #include "../model/map.h"
 #include "../view/renderer.h"
 
