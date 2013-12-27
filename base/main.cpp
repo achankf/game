@@ -20,7 +20,7 @@ void run(Base::Model::Game &game,
 }
 
 void setupNCurses(int argc, char **argv) {
-	::Base::Model::Game game(argc, argv);
+	::Base::Model::Game game;
 	using namespace NCurses;
 	View::Renderer renderer;
 	Control::Controller controller(game, renderer);
@@ -29,7 +29,7 @@ void setupNCurses(int argc, char **argv) {
 }
 
 void setupNull(int argc, char **argv) {
-	::Base::Model::Game game(argc, argv);
+	::Base::Model::Game game;
 	using namespace Null;
 	View::Renderer renderer;
 	Control::Controller controller(game, renderer);

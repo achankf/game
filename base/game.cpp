@@ -9,7 +9,7 @@
 #include "gamedb.h"
 using namespace Base::Model;
 
-Game::Game(int argc, char **argv)
+Game::Game()
 	: rando(), db("save.db"), map(rando.next()) {
 }
 

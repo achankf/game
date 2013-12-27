@@ -25,7 +25,7 @@ protected:
 	Map map;
 
 public:
-	Game(int argc, char **argv);
+	Game();
 	virtual ~Game() {}
 
 	id_type get_userid(const char *uid);
