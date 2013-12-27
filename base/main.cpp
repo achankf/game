@@ -3,13 +3,11 @@
 #include <noise/noise.h>
 #include "randgen.h"
 #include "base/model/player.h"
+#include "base/model/map.h"
+#include "base/model/game.h"
 #include "base/view/renderer.h"
-#include "null/model/map.h"
-#include "null/model/game.h"
 #include "null/view/renderer.h"
 #include "null/control/controller.h"
-#include "ncurses/model/map.h"
-#include "ncurses/model/game.h"
 #include "ncurses/view/renderer.h"
 #include "ncurses/control/controller.h"
 
@@ -25,11 +23,11 @@ void run(Base::Model::Game &game,
 }
 
 void setupNCurses(int argc, char **argv) {
+	::Base::Model::Map map(rando.next());
+	::Base::Model::Game game(argc, argv, rando, map);
 	using namespace NCurses;
-	View::Renderer renderer;
-	Model::Map map(rando.next());
-	Model::Game game(argc, argv, rando, map);
-	Control::Controller controller(game, map, renderer);
+	::NCurses::View::Renderer renderer;
+	::NCurses::Control::Controller controller(game, map, renderer);
 
 	renderer.set_renderable(View::MAP,map);
 	renderer.set_renderable(View::GAME,game);
@@ -39,11 +37,12 @@ void setupNCurses(int argc, char **argv) {
 }
 
 void setupNull(int argc, char **argv) {
-	using namespace Null;
-	View::Renderer renderer;
+	using namespace Base;
 	Model::Map map(rando.next());
 	Model::Game game(argc, argv, rando, map);
-	Control::Controller controller(game, map, renderer);
+	using namespace Null;
+	::Null::View::Renderer renderer;
+	::Null::Control::Controller controller(game, map, renderer);
 
 	run(game, map, renderer, controller);
 }

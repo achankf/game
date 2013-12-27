@@ -3,9 +3,9 @@
 
 #include "../../type.h"
 
-namespace Base{
-namespace Model{
-	class Map;
+namespace Base {
+namespace Model {
+class Map;
 }
 }
 

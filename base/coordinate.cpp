@@ -20,7 +20,7 @@ void Coordinate::set_y(scalar_t y) {
 }
 
 #if 0
-void Coordinate::render(){
+void Coordinate::render() {
 	mvwprintw(stdscr, get_x(), get_y(), "%c ", 254);
 }
 #endif

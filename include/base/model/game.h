@@ -9,15 +9,15 @@
 
 namespace Base {
 
-namespace View{
-	class Renderer;
+namespace View {
+class Renderer;
 }
 
 namespace Model {
 
 class Map;
 
-class Game : ::Base::View::Renderable {
+class Game : public ::Base::View::Renderable {
 protected:
 	RandGen<int> &rando;
 	GameDB db;

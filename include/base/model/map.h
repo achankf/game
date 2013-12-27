@@ -6,8 +6,8 @@
 
 namespace Base {
 
-namespace View{
-	class Renderer;
+namespace View {
+class Renderer;
 }
 
 namespace Model {

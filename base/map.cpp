@@ -1,4 +1,5 @@
 #include "base/model/map.h"
+#include "base/view/renderer.h"
 using namespace Base::Model;
 
 Map::Map(int seed, int length, int width)
@@ -27,4 +28,12 @@ Map::TileType Map::baseToTile(double val) {
 	else if (val < 0.6) return GRASS;
 	else if (val < 0.9) return HILL;
 	else return SNOW;
+}
+
+void Map::render(::Base::View::Renderer &renderer) {
+	for (int i = 0; i < this->getLength(); i++) {
+		for (int j = 0; j < this->getWidth(); j++) {
+			renderer.render_terrain(*this, i,j,i+0.5, j+0.5);
+		}
+	}
 }

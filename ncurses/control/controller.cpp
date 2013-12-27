@@ -1,15 +1,16 @@
 #include <ncurses.h>
+#include "base/model/game.h"
+#include "base/model/map.h"
 #include "base/model/player.h"
 #include "base/view/renderer.h"
+#include "ncurses/view/renderer.h"
 #include "ncurses/control/controller.h"
-#include "ncurses/model/game.h"
-#include "ncurses/model/map.h"
 
 using namespace NCurses::Control;
 
 Controller::Controller(
-    ::NCurses::Model::Game &game,
-    ::NCurses::Model::Map &map,
+    ::Base::Model::Game &game,
+    ::Base::Model::Map &map,
     ::NCurses::View::Renderer &renderer
 ) : ::Base::Control::Controller (game, map, renderer) {}
 
