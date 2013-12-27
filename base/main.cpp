@@ -1,5 +1,6 @@
 #include <iostream>
 #include <random>
+#include <cstring>
 #include <noise/noise.h>
 #include "randgen.h"
 #include "base/model/player.h"
@@ -19,8 +20,7 @@ void run(Base::Model::Game &game,
 	controller.event_loop(player);
 }
 
-void setupNCurses(int argc, char **argv) {
-	::Base::Model::Game game;
+inline void runNCurses(::Base::Model::Game &game) {
 	using namespace NCurses;
 	View::Renderer renderer;
 	Control::Controller controller(game, renderer);
@@ -28,8 +28,7 @@ void setupNCurses(int argc, char **argv) {
 	run(game, renderer, controller);
 }
 
-void setupNull(int argc, char **argv) {
-	::Base::Model::Game game;
+inline void runNull(::Base::Model::Game &game) {
 	using namespace Null;
 	View::Renderer renderer;
 	Control::Controller controller(game, renderer);
@@ -37,10 +36,19 @@ void setupNull(int argc, char **argv) {
 	run(game, renderer, controller);
 }
 
+inline void setup(int argc, char **argv){
+	::Base::Model::Game game;
+
+	if (argc == 1 || std::strcmp("null", argv[1]) == 0){
+		runNull(game);
+	} else {
+		runNCurses(game);
+	}
+}
+
 int main(int argc, char **argv) {
 	try {
-		setupNCurses(argc, argv);
-		setupNull(argc, argv);
+		setup(argc, argv);
 	} catch (std::exception &ex) {
 		std::cerr << "Errors found: " << ex.what() << std::endl;
 		return 1;

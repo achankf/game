@@ -3,14 +3,13 @@
 #include "base/model/map.h"
 #include "base/model/player.h"
 #include "base/view/renderer.h"
-#include "ncurses/view/renderer.h"
 #include "ncurses/control/controller.h"
 
 using namespace NCurses::Control;
 
 Controller::Controller(
     ::Base::Model::Game &game,
-    ::NCurses::View::Renderer &renderer
+    ::Base::View::Renderer &renderer
 ) : ::Base::Control::Controller (game, renderer) {}
 
 void Controller::event_loop(

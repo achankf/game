@@ -9,13 +9,14 @@ class Player;
 class Map;
 class Game;
 }
-}
-
-namespace NCurses {
 
 namespace View {
 class Renderer;
 }
+
+}
+
+namespace NCurses {
 
 namespace Control {
 
@@ -24,7 +25,7 @@ class Controller : public ::Base::Control::Controller {
 public:
 	Controller(
 	    ::Base::Model::Game &game,
-	    ::NCurses::View::Renderer &renderer
+	    ::Base::View::Renderer &renderer
 	);
 	void event_loop(
 	    ::Base::Model::Player &player
