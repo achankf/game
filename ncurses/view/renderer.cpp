@@ -31,25 +31,6 @@ Renderer::~Renderer() {
 	endwin();
 }
 
-void Renderer::render_all() {
-#ifndef NDEBUG
-	for (int i = 0; i < NUM_RANDERABLES; i++) {
-		assert(render_lst[i] != nullptr);
-	}
-#endif
-
-	for (int i = 0; i < NUM_RANDERABLES; i++) {
-		//if (!this->render_lst[i]) continue;
-		this->render_lst[i]->render(*this);
-	}
-}
-
-void Renderer::set_renderable(
-    RenderableType type,
-    ::Base::View::Renderable &renderable) {
-	this->render_lst[type] = &renderable;
-}
-
 void Renderer::render_terrain(::Base::Model::Map &map, int i, int j, scalar_t x, scalar_t y) {
 	Colour colour;
 	double val = map.getBaseTile(0.5 + x, 0.5 + y);

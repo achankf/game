@@ -24,7 +24,6 @@ class Controller : public ::Base::Control::Controller {
 public:
 	Controller(
 	    ::Base::Model::Game &game,
-	    ::Base::Model::Map &map,
 	    ::Null::View::Renderer &renderer
 	);
 	void event_loop(

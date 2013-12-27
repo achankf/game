@@ -18,15 +18,13 @@ namespace Control {
 class Controller {
 protected:
 	::Base::Model::Game &game;
-	::Base::Model::Map &map;
 	::Base::View::Renderer &renderer;
 
 public:
 	Controller(
 	    ::Base::Model::Game &game,
-	    ::Base::Model::Map &map,
 	    ::Base::View::Renderer &renderer)
-		: game(game), map(map), renderer(renderer) {}
+		: game(game), renderer(renderer) {}
 	virtual ~Controller() {}
 	virtual void event_loop(
 	    ::Base::Model::Player &player

@@ -6,6 +6,7 @@
 #include "../../randgen.h"
 #include "../../type.h"
 #include "../view/renderable.h"
+#include "map.h"
 
 namespace Base {
 
@@ -19,11 +20,12 @@ class Map;
 
 class Game : public ::Base::View::Renderable {
 protected:
-	RandGen<int> &rando;
+	RandGen<int> rando;
 	GameDB db;
+	Map map;
 
 public:
-	Game(int argc, char **argv, RandGen<int> &rando, Map &map);
+	Game(int argc, char **argv);
 	virtual ~Game() {}
 
 	id_type get_userid(const char *uid);

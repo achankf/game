@@ -11,10 +11,7 @@
 #include "ncurses/view/renderer.h"
 #include "ncurses/control/controller.h"
 
-RandGen<int> rando;
-
 void run(Base::Model::Game &game,
-         Base::Model::Map &map,
          Base::View::Renderer &renderer,
          Base::Control::Controller &controller) {
 
@@ -23,28 +20,21 @@ void run(Base::Model::Game &game,
 }
 
 void setupNCurses(int argc, char **argv) {
-	::Base::Model::Map map(rando.next());
-	::Base::Model::Game game(argc, argv, rando, map);
+	::Base::Model::Game game(argc, argv);
 	using namespace NCurses;
-	::NCurses::View::Renderer renderer;
-	::NCurses::Control::Controller controller(game, map, renderer);
+	View::Renderer renderer;
+	Control::Controller controller(game, renderer);
 
-	renderer.set_renderable(View::MAP,map);
-	renderer.set_renderable(View::GAME,game);
-	//renderer.set_renderable(View::CURSOR,controller.get_cursor());
-
-	run(game, map, renderer, controller);
+	run(game, renderer, controller);
 }
 
 void setupNull(int argc, char **argv) {
-	using namespace Base;
-	Model::Map map(rando.next());
-	Model::Game game(argc, argv, rando, map);
+	::Base::Model::Game game(argc, argv);
 	using namespace Null;
-	::Null::View::Renderer renderer;
-	::Null::Control::Controller controller(game, map, renderer);
+	View::Renderer renderer;
+	Control::Controller controller(game, renderer);
 
-	run(game, map, renderer, controller);
+	run(game, renderer, controller);
 }
 
 int main(int argc, char **argv) {

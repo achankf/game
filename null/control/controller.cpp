@@ -10,9 +10,8 @@ using namespace Null::Control;
 
 Controller::Controller(
     ::Base::Model::Game &game,
-    ::Base::Model::Map &map,
     ::Null::View::Renderer &renderer
-) : ::Base::Control::Controller (game, map, renderer) {}
+) : ::Base::Control::Controller (game, renderer) {}
 
 void Controller::event_loop(
     ::Base::Model::Player &player

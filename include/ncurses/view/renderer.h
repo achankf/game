@@ -17,13 +17,10 @@ namespace View {
 enum RenderableType {MAP,GAME,NUM_RANDERABLES};
 
 class Renderer : public ::Base::View::Renderer {
-	::Base::View::Renderable *render_lst[NUM_RANDERABLES];
 public:
 	enum Colour {GREEN = 1, BLUE, RED, CYAN, WHITE, YELLOW};
 	Renderer();
 	virtual ~Renderer();
-	void render_all();
-	void set_renderable(RenderableType type, ::Base::View::Renderable &renderable);
 	void render_terrain(::Base::Model::Map &map, int i, int j, scalar_t x, scalar_t y);
 };
 

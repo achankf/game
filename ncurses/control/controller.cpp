@@ -10,20 +10,19 @@ using namespace NCurses::Control;
 
 Controller::Controller(
     ::Base::Model::Game &game,
-    ::Base::Model::Map &map,
     ::NCurses::View::Renderer &renderer
-) : ::Base::Control::Controller (game, map, renderer) {}
+) : ::Base::Control::Controller (game, renderer) {}
 
 void Controller::event_loop(
     ::Base::Model::Player &player
 ) {
-	renderer.render_all();
+	this->game.render(this->renderer);
 	refresh();
 
 	char input;
 
 	while((input = getch())) {
-		renderer.render_all();
+		this->game.render(this->renderer);
 		refresh();
 		switch (input) {
 		case 'q' :

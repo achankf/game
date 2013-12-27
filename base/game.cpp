@@ -9,8 +9,8 @@
 #include "gamedb.h"
 using namespace Base::Model;
 
-Game::Game(int argc, char **argv, RandGen<int> &rando, Map &map)
-	: rando(rando), db("save.db") {
+Game::Game(int argc, char **argv)
+	: rando(), db("save.db"), map(rando.next()) {
 }
 
 id_type Game::get_userid(const char *uid) {
@@ -18,4 +18,5 @@ id_type Game::get_userid(const char *uid) {
 }
 
 void Game::render(::Base::View::Renderer &renderer) {
+	map.render(renderer);
 }
