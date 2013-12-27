@@ -13,10 +13,6 @@
 #include "ncurses/view/renderer.h"
 #include "ncurses/control/controller.h"
 
-#define S 20
-
-using namespace std;
-
 RandGen<int> rando;
 
 void run(Base::Model::Game &game,
@@ -24,20 +20,20 @@ void run(Base::Model::Game &game,
          Base::View::Renderer &renderer,
          Base::Control::Controller &controller) {
 
-	renderer.set(Base::View::MAP, map);
-	renderer.set(Base::View::GAME, game);
-
 	Base::Model::Player player(game, "alfred");
-
-	controller.event_loop();
+	controller.event_loop(player);
 }
 
 void setupNCurses(int argc, char **argv) {
 	using namespace NCurses;
 	View::Renderer renderer;
-	Model::Map map(renderer, rando.next());
-	Model::Game game(argc, argv, rando, renderer, map);
+	Model::Map map(rando.next());
+	Model::Game game(argc, argv, rando, map);
 	Control::Controller controller(game, map, renderer);
+
+	renderer.set_renderable(View::MAP,map);
+	renderer.set_renderable(View::GAME,game);
+	//renderer.set_renderable(View::CURSOR,controller.get_cursor());
 
 	run(game, map, renderer, controller);
 }
@@ -45,8 +41,8 @@ void setupNCurses(int argc, char **argv) {
 void setupNull(int argc, char **argv) {
 	using namespace Null;
 	View::Renderer renderer;
-	Model::Map map(renderer, rando.next());
-	Model::Game game(argc, argv, rando, renderer, map);
+	Model::Map map(rando.next());
+	Model::Game game(argc, argv, rando, map);
 	Control::Controller controller(game, map, renderer);
 
 	run(game, map, renderer, controller);

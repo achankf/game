@@ -6,13 +6,9 @@ namespace View {
 
 class Renderer;
 
-class Renderable {
-	Renderer &renderer;
-
-public:
-	Renderable(Renderer &renderer) : renderer(renderer) {}
+struct Renderable {
 	virtual ~Renderable() {}
-	virtual void render() = 0;
+	virtual void render(Renderer &renderer) = 0;
 };
 
 }

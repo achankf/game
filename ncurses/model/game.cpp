@@ -4,11 +4,10 @@
 using namespace NCurses::Model;
 
 Game::Game(int argc, char **argv, RandGen<int> &rando,
-           ::NCurses::View::Renderer &renderer,
            ::NCurses::Model::Map &map) :
 
-	::Base::Model::Game(argc, argv, rando, renderer, map) {
+	::Base::Model::Game(argc, argv, rando, map) {
 }
 
-void Game::render() {
+void Game::render(::NCurses::View::Renderer &renderer) {
 }

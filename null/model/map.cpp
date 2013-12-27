@@ -2,8 +2,8 @@
 #include "null/view/renderer.h"
 using namespace Null::Model;
 
-Map::Map(Null::View::Renderer &renderer, int seed)
-	: Base::Model::Map(renderer, seed) {
+Map::Map(int seed)
+	: Base::Model::Map(seed) {
 }
 
 void Map::render() {}

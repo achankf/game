@@ -4,7 +4,8 @@
 #include <utility>
 #include <stdint.h>
 
-typedef std::pair<float, float> coor_t;
+typedef float scalar_t;
+typedef std::pair<scalar_t, scalar_t> coor_t;
 typedef int64_t id_type;
 
 #endif

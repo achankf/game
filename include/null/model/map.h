@@ -14,7 +14,7 @@ namespace Model {
 
 class Map : public ::Base::Model::Map {
 public:
-	Map(::Null::View::Renderer &renderer, int seed);
+	Map(int seed);
 	void render();
 };
 

@@ -1,3 +1,4 @@
+#include "base/model/map.h"
 #include "ncurses/view/renderer.h"
 #include "ncurses/model/game.h"
 #include "ncurses/model/map.h"
@@ -5,7 +6,7 @@
 #include <iostream>
 using namespace NCurses::View;
 
-Renderer::Renderer() {
+Renderer::Renderer(){
 	int rv = 0;
 
 	initscr();
@@ -30,4 +31,55 @@ Renderer::Renderer() {
 
 Renderer::~Renderer() {
 	endwin();
+}
+
+void Renderer::render_all() {
+#ifndef NDEBUG
+	for (int i = 0; i < NUM_RANDERABLES; i++) {
+		assert(render_lst[i] != nullptr);
+	}
+#endif
+
+	for (int i = 0; i < NUM_RANDERABLES; i++) {
+		//if (!this->render_lst[i]) continue;
+		this->render_lst[i]->render(*this);
+	}
+}
+
+void Renderer::set_renderable(
+	RenderableType type,
+	::Base::View::Renderable<Renderer> &renderable) {
+	this->render_lst[type] = &renderable;
+}
+
+void Renderer::render_terrain(::Base::Model::Map &map, int i, int j, scalar_t x, scalar_t y){
+			Colour colour;
+		double val = map.getBaseTile(0.5 + x, 0.5 + y);
+
+			switch (map.baseToTile(val)) {
+			case ::Base::Model::Map::DEEP:
+				colour = Renderer::BLUE;
+				break;
+			case ::Base::Model::Map::SHALLOW:
+				colour = Renderer::CYAN;
+				break;
+			case ::Base::Model::Map::PLAIN:
+				colour = Renderer::YELLOW;
+				break;
+			case ::Base::Model::Map::GRASS:
+				colour = Renderer::GREEN;
+				break;
+			case ::Base::Model::Map::HILL:
+				colour = Renderer::RED;
+				break;
+			case ::Base::Model::Map::SNOW:
+				colour = Renderer::WHITE;
+				break;
+			default:
+				assert("Invalid Tile Type" == nullptr); // aka fails
+			}
+
+			attron(COLOR_PAIR(colour));
+			mvwprintw(stdscr, y, x, "%c ", 254);
+			attroff(COLOR_PAIR(colour));
 }

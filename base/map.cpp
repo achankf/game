@@ -1,9 +1,8 @@
 #include "base/model/map.h"
-#include "base/view/renderer.h"
 using namespace Base::Model;
 
-Map::Map(::Base::View::Renderer &renderer, int seed, int length, int width)
-	: ::Base::View::Renderable(renderer), length(length), width(width) {
+Map::Map(int seed, int length, int width)
+	: length(length), width(width) {
 	perlin.SetSeed(seed);
 	perlin.SetFrequency(0.03);
 	perlin.SetPersistence (0.55);

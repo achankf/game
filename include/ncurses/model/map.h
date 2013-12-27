@@ -8,10 +8,10 @@
 namespace NCurses {
 namespace Model {
 
-class Map : public ::Base::Model::Map {
+class Map : public ::Base::Model::Map, public ::Base::View::Renderable<::NCurses::View::Renderer> {
 public:
-	Map(::NCurses::View::Renderer &renderer, int seed);
-	void render();
+	Map(int seed);
+	void render(::NCurses::View::Renderer &renderer);
 };
 
 }

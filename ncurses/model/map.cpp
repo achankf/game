@@ -4,14 +4,17 @@
 #include <ncurses.h>
 using namespace NCurses::Model;
 
-Map::Map(NCurses::View::Renderer &renderer, int seed)
-	: Base::Model::Map(renderer, seed) {
+Map::Map(int seed)
+	: Base::Model::Map(seed) {
 }
 
-void Map::render() {
+void Map::render(::NCurses::View::Renderer &renderer) {
 	for (int i = 0; i < this->getLength(); i++) {
 		for (int j = 0; j < this->getWidth(); j++) {
+	renderer.render_terrain(*this, i,j,i+0.5, j+0.5);
+#if 0
 
+	randerer.render_terrain(*this, 
 			double val = this->getBaseTile(0.5 + i, 0.5 + j);
 
 			using namespace NCurses::View;
@@ -43,7 +46,7 @@ void Map::render() {
 			attron(COLOR_PAIR(colour));
 			mvwprintw(stdscr, j, i, "%c ", 254);
 			attroff(COLOR_PAIR(colour));
+#endif
 		}
 	}
-	attrset(0);
 }

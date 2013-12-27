@@ -1,8 +1,8 @@
 CC = g++
 CFLAGS += -std=c++11 -ggdb -Wall -Werror -pedantic
 CFLAGS += -Iinclude
-CFLAGS += -lboost_system -lncurses -lnoise -lsqlite3 #$(shell sdl2-config --cflags)
-LDLIBS = # $(shell sdl2-config --libs)
+LDLIBS += -lncurses -lnoise -lsqlite3 #$(shell sdl2-config --cflags)
+LDLIBS += # $(shell sdl2-config --libs)
 SOURCES = $(shell find -name "*.cpp")
 OBJECTS = $(SOURCES:.cpp=.o)
 

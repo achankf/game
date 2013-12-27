@@ -3,6 +3,12 @@
 
 #include "../../base/control/controller.h"
 
+namespace Base {
+namespace Model {
+class Player;
+}
+}
+
 namespace Null {
 
 namespace View {
@@ -19,8 +25,14 @@ namespace Control {
 class Controller : public ::Base::Control::Controller {
 
 public:
-	Controller(::Null::Model::Game &game, ::Null::Model::Map &map, ::Null::View::Renderer &renderer);
-	void event_loop();
+	Controller(
+	    ::Null::Model::Game &game,
+	    ::Null::Model::Map &map,
+	    ::Null::View::Renderer &renderer
+	);
+	void event_loop(
+	    ::Base::Model::Player &player
+	);
 };
 
 }
