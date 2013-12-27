@@ -19,6 +19,7 @@ public:
 	Renderer () {}
 	virtual ~Renderer() {}
 	void render_terrain(::Base::Model::Map &map, int i, int j, scalar_t x, scalar_t y);
+	void render_cursor(::Base::Model::Map &map, scalar_t x, scalar_t y);
 };
 
 }

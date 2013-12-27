@@ -1,11 +1,10 @@
 #ifndef _game_h_
 #define _game_h_
 
-#include <random>
 #include "../../gamedb.h"
 #include "../../randgen.h"
 #include "../../type.h"
-#include "../view/renderable.h"
+#include "model.h"
 #include "map.h"
 
 namespace Base {
@@ -18,7 +17,7 @@ namespace Model {
 
 class Map;
 
-class Game : public ::Base::View::Renderable {
+class Game : public ::Base::Model::Model {
 protected:
 	RandGen<int> rando;
 	GameDB db;
@@ -29,7 +28,6 @@ public:
 	virtual ~Game() {}
 
 	id_type get_userid(const char *uid);
-	void render(::Base::View::Renderer &renderer);
 };
 
 }

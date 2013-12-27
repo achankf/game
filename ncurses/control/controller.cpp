@@ -10,19 +10,21 @@ using namespace NCurses::Control;
 Controller::Controller(
     ::Base::Model::Game &game,
     ::Base::View::Renderer &renderer
-) : ::Base::Control::Controller (game, renderer) {}
+) : ::Base::Control::Controller (game, renderer), cursor(0,0) {
+}
 
 void Controller::event_loop(
     ::Base::Model::Player &player
 ) {
-	this->game.render(this->renderer);
+	this->game.update_all_views(this->renderer);
 	refresh();
 
 	char input;
 
-	while((input = getch())) {
-		this->game.render(this->renderer);
+	while (true) {
+		this->game.update_all_views(this->renderer);
 		refresh();
+		if (!(input = getch())) break;
 		switch (input) {
 		case 'q' :
 			return;

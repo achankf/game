@@ -36,13 +36,16 @@ inline void runNull(::Base::Model::Game &game) {
 	run(game, renderer, controller);
 }
 
-inline void setup(int argc, char **argv){
+inline void setup(int argc, char **argv) {
 	::Base::Model::Game game;
 
-	if (argc == 1 || std::strcmp("null", argv[1]) == 0){
+	if (argc == 1 || std::strcmp("ncurses", argv[1]) == 0) {
+		runNCurses(game);
+	} else if (std::strcmp("null", argv[1]) == 0) {
 		runNull(game);
 	} else {
-		runNCurses(game);
+		std::cerr << "Invalid display/controlling model" << std::endl;
+		throw std::exception();
 	}
 }
 

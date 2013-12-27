@@ -13,7 +13,7 @@ main : $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDLIBS) $^ -o $@
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $(LDLIBS) $< -c -o $@
+	$(CC) $(CFLAGS) $< -c -o $@
 
 .phony : clean style
 

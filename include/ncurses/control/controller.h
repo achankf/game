@@ -2,6 +2,7 @@
 #define _controller_ncurses_h_
 
 #include "../../base/control/controller.h"
+#include "type.h"
 
 namespace Base {
 namespace Model {
@@ -21,6 +22,8 @@ namespace NCurses {
 namespace Control {
 
 class Controller : public ::Base::Control::Controller {
+protected:
+	coor_t cursor;
 
 public:
 	Controller(
@@ -30,6 +33,7 @@ public:
 	void event_loop(
 	    ::Base::Model::Player &player
 	);
+	virtual ~Controller() {}
 };
 
 }
