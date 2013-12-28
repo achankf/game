@@ -1,10 +1,10 @@
 #ifndef _game_h_
 #define _game_h_
 
+#include <list>
 #include "../../gamedb.h"
 #include "../../randgen.h"
 #include "../../type.h"
-#include "model.h"
 #include "map.h"
 
 namespace Base {
@@ -15,10 +15,9 @@ class Renderer;
 
 namespace Model {
 
-class Map;
-
-class Game : public ::Base::Model::Model {
+class Game{
 protected:
+	std::list<::Base::View::Renderable *> view_lst;
 	RandGen<int> rando;
 	GameDB db;
 	Map map;
@@ -26,6 +25,9 @@ protected:
 public:
 	Game();
 	virtual ~Game() {}
+	const Map &get_map() const;
+	void add_view(::Base::View::Renderable &view);
+	void update_all_views(::Base::View::Renderer &renderer);
 
 	id_type get_userid(const char *uid);
 };

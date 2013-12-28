@@ -9,7 +9,7 @@ Map::Map(int seed, int length, int width)
 	perlin.SetPersistence (0.55);
 }
 
-double Map::getBaseTile(double x, double y, double z) {
+double Map::getBaseTile(double x, double y, double z) const{
 	return this->perlin.GetValue(x,y,z);
 }
 
@@ -21,7 +21,7 @@ int Map::getWidth() {
 	return this->width;
 }
 
-Map::TileType Map::baseToTile(double val) {
+Map::TileType Map::baseToTile(double val) const{
 	if (val < -0.1) return DEEP;
 	else if (val < 0) return SHALLOW;
 	else if (val < 0.25) return PLAIN;
@@ -30,10 +30,10 @@ Map::TileType Map::baseToTile(double val) {
 	else return SNOW;
 }
 
-void Map::render(::Base::View::Renderer &renderer) {
+void Map::render(::Base::Model::Game &game, ::Base::View::Renderer &renderer) {
 	for (int i = 0; i < this->getLength(); i++) {
 		for (int j = 0; j < this->getWidth(); j++) {
-			renderer.render_terrain(*this, i,j,i+0.5, j+0.5);
+			renderer.render_terrain(game, i,j,i+0.5, j+0.5);
 		}
 	}
 }

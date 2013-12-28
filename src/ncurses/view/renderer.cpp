@@ -1,4 +1,5 @@
 #include "base/model/map.h"
+#include "base/model/game.h"
 #include "ncurses/view/renderer.h"
 #include <ncurses.h>
 #include <iostream>
@@ -31,10 +32,15 @@ Renderer::~Renderer() {
 	endwin();
 }
 
-void Renderer::render_terrain(::Base::Model::Map &map, int i, int j, scalar_t x, scalar_t y) {
+void Renderer::render_terrain(::Base::Model::Game &game, int i, int j, scalar_t x, scalar_t y) {
 
+	(void) game;
 	(void) i;
 	(void) j;
+	(void) x;
+	(void) y;
+
+	const ::Base::Model::Map &map = game.get_map();
 
 	Colour colour;
 	double val = map.getBaseTile(0.5 + x, 0.5 + y);
@@ -67,7 +73,12 @@ void Renderer::render_terrain(::Base::Model::Map &map, int i, int j, scalar_t x,
 	attroff(COLOR_PAIR(colour));
 }
 
-void Renderer::render_cursor(::Base::Model::Map &map, scalar_t x, scalar_t y) {
+void Renderer::render_cursor(::Base::Model::Game &game, scalar_t x, scalar_t y) {
+	(void) game;
+	(void) x;
+	(void) y;
+	const ::Base::Model::Map &map = game.get_map();
+
 	double val = map.getBaseTile(0.5 + x, 0.5 + y);
 	Colour colour = tile_type_to_colour(map.baseToTile(val));
 	attron(COLOR_PAIR(colour));

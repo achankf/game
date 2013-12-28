@@ -10,7 +10,7 @@ using namespace NCurses::Control;
 Controller::Controller(
     ::Base::Model::Game &game,
     ::Base::View::Renderer &renderer
-) : ::Base::Control::Controller (game, renderer), cursor(0,0) {
+) : ::Base::Control::Controller (game, renderer) {
 }
 
 void Controller::event_loop(

@@ -4,11 +4,15 @@ CFLAGS += -Iinclude
 LDLIBS += -lncurses -lnoise -lsqlite3
 SOURCES = $(shell find -name "*.cpp")
 OBJECTS = $(SOURCES:.cpp=.o)
+EXE = main
+DB = save.db
 
-all : main
+all : $(EXE) $(DB)
+
+$(DB) : 
 	[ -f save.db ] && echo "Database already exists" || sqlite3 save.db < gamedb.sql
 
-main : $(OBJECTS)
+$(EXE) : $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDLIBS) $^ -o $@
 
 %.o: %.cpp

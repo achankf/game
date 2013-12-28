@@ -23,7 +23,6 @@ namespace Control {
 
 class Controller : public ::Base::Control::Controller {
 protected:
-	coor_t cursor;
 
 public:
 	Controller(

@@ -12,6 +12,8 @@ class Renderer;
 
 namespace Model {
 
+class Game;
+
 class Map : public ::Base::View::Renderable {
 	noise::module::Perlin perlin;
 	const int length, width;
@@ -21,12 +23,12 @@ public:
 	enum TileType {DEEP, SHALLOW, PLAIN, GRASS, HILL, SNOW};
 
 	Map(int seed, int length = MAP_LENGTH, int width = MAP_WIDTH);
-	double getBaseTile(double x, double y, double z = 100);
+	double getBaseTile(double x, double y, double z = 100) const;
 
 	int getLength();
 	int getWidth();
-	TileType baseToTile(double val);
-	void render(::Base::View::Renderer &renderer);
+	TileType baseToTile(double val) const;
+	void render(::Base::Model::Game &game, ::Base::View::Renderer &renderer);
 };
 
 }

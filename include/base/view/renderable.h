@@ -2,13 +2,18 @@
 #define _renderable_h_
 
 namespace Base {
+
+namespace Model{
+	class Game;
+}
+
 namespace View {
 
 class Renderer;
 
 struct Renderable {
 	virtual ~Renderable() {}
-	virtual void render(Renderer &renderer) = 0;
+	virtual void render(::Base::Model::Game &game, Renderer &renderer) = 0;
 };
 
 }

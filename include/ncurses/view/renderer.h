@@ -6,8 +6,8 @@
 #include "../../type.h"
 
 namespace Base {
-namespace Model {
-class Map;
+namespace Model{
+	class Game;
 }
 }
 
@@ -21,8 +21,8 @@ public:
 	enum Colour {GREEN = 1, BLUE, RED, CYAN, WHITE, YELLOW};
 	Renderer();
 	virtual ~Renderer();
-	void render_terrain(::Base::Model::Map &map, int i, int j, scalar_t x, scalar_t y);
-	void render_cursor(::Base::Model::Map &map, scalar_t x, scalar_t y);
+	void render_terrain(::Base::Model::Game &game, int i, int j, scalar_t x, scalar_t y);
+	void render_cursor(::Base::Model::Game &game, scalar_t x, scalar_t y);
 
 protected:
 	Colour tile_type_to_colour(::Base::Model::Map::TileType type);
