@@ -12,9 +12,11 @@
 #include "ncurses/view/renderer.h"
 #include "ncurses/control/controller.h"
 
-void run(Base::Model::Game &game,
+static void run(Base::Model::Game &game,
          Base::View::Renderer &renderer,
          Base::Control::Controller &controller) {
+
+	(void) renderer;
 
 	Base::Model::Player player(game, "alfred");
 	controller.event_loop(player);

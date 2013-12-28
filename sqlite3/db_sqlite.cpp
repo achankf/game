@@ -4,7 +4,7 @@
 
 SQLite3Transaction::SQLite3Transaction(SQLite3Database &db) : db(db) {
 
-	sqlite3 *handle = (sqlite3*) this->db.get_handle();
+	sqlite3 *handle = static_cast<sqlite3*>(this->db.get_handle());
 
 	if (sqlite3_exec(handle, "begin", nullptr, nullptr, nullptr)) {
 #ifndef NDEBUG
@@ -16,7 +16,7 @@ SQLite3Transaction::SQLite3Transaction(SQLite3Database &db) : db(db) {
 
 int SQLite3Transaction::commit() {
 
-	sqlite3 *handle = (sqlite3*) this->db.get_handle();
+	sqlite3 *handle = static_cast<sqlite3*>(this->db.get_handle());
 
 	int rv = sqlite3_exec(handle, "commit", nullptr, nullptr, nullptr);
 	if (rv) {
@@ -29,7 +29,7 @@ int SQLite3Transaction::commit() {
 
 int SQLite3Transaction::rollback() {
 
-	sqlite3 *handle = (sqlite3*) this->db.get_handle();
+	sqlite3 *handle = static_cast<sqlite3*>(this->db.get_handle());
 
 	int rv = sqlite3_exec(handle, "commit", nullptr, nullptr, nullptr);
 	if (rv) {

@@ -15,4 +15,5 @@ Controller::Controller(
 void Controller::event_loop(
     ::Base::Model::Player &player
 ) {
+	(void) player;
 }

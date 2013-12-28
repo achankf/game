@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 typedef float scalar_t;
-typedef std::pair<scalar_t, scalar_t> coor_t;
 typedef int64_t id_type;
+typedef std::pair<scalar_t, scalar_t> coor_t;
 
 #endif

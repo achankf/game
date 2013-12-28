@@ -32,6 +32,10 @@ Renderer::~Renderer() {
 }
 
 void Renderer::render_terrain(::Base::Model::Map &map, int i, int j, scalar_t x, scalar_t y) {
+
+	(void) i;
+	(void) j;
+
 	Colour colour;
 	double val = map.getBaseTile(0.5 + x, 0.5 + y);
 

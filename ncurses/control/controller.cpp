@@ -16,6 +16,9 @@ Controller::Controller(
 void Controller::event_loop(
     ::Base::Model::Player &player
 ) {
+
+	(void) player;
+
 	this->game.update_all_views(this->renderer);
 	refresh();
 
