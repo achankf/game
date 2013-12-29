@@ -15,7 +15,7 @@ class Renderer;
 
 namespace Model {
 
-class Game{
+class Game {
 protected:
 	std::list<::Base::View::Renderable *> view_lst;
 	RandGen<int> rando;

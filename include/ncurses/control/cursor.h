@@ -3,15 +3,15 @@
 
 #include "../../base/view/renderable.h"
 
-namespace Base{
-	namespace View{
-	class Renderer;
-	}
+namespace Base {
+namespace View {
+class Renderer;
+}
 }
 
-namespace NCurses{
+namespace NCurses {
 
-namespace Control{
+namespace Control {
 
 class Cursor : public coor_t, public ::Base::View::Renderable {
 public:

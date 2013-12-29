@@ -10,15 +10,12 @@ namespace Model {
 class Game;
 
 class Locatable {
-	coor_t coor;
+protected:
 	id_type lid;
-
 public:
-	Locatable(Game &game, id_type cid);
-	void set_x(scalar_t x);
-	void set_y(scalar_t y);
-	void set_z(scalar_t z);
-	const coor_t &get_coor() const;
+	Locatable(Game &game, id_type lid);
+	void update_coor(Game &game, scalar_t x, scalar_t y, scalar_t z);
+	void get_coor(Game &game, coor_t &coor);
 };
 
 }

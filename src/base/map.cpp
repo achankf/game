@@ -9,7 +9,7 @@ Map::Map(int seed, int length, int width)
 	perlin.SetPersistence (0.55);
 }
 
-double Map::getBaseTile(double x, double y, double z) const{
+double Map::getBaseTile(double x, double y, double z) const {
 	return this->perlin.GetValue(x,y,z);
 }
 
@@ -21,7 +21,7 @@ int Map::getWidth() {
 	return this->width;
 }
 
-Map::TileType Map::baseToTile(double val) const{
+Map::TileType Map::baseToTile(double val) const {
 	if (val < -0.1) return DEEP;
 	else if (val < 0) return SHALLOW;
 	else if (val < 0.25) return PLAIN;

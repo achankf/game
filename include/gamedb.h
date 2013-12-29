@@ -15,7 +15,7 @@ enum Query {
 }
 
 class GameDB : public SQLite3Database {
-	const char *mapping[SQL::NUM_QUERIES];
+	const char *mapping[SQL::NUM_QUERIES] = {nullptr};
 	sqlite3_stmt *stmts[SQL::NUM_QUERIES] = {nullptr};
 
 	void setup_mappings();

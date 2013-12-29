@@ -6,8 +6,8 @@
 #include "../../type.h"
 
 namespace Base {
-namespace Model{
-	class Game;
+namespace Model {
+class Game;
 }
 }
 

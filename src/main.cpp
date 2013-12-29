@@ -13,8 +13,8 @@
 #include "ncurses/control/controller.h"
 
 static void run(Base::Model::Game &game,
-         Base::View::Renderer &renderer,
-         Base::Control::Controller &controller) {
+                Base::View::Renderer &renderer,
+                Base::Control::Controller &controller) {
 
 	(void) renderer;
 

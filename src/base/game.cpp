@@ -13,7 +13,7 @@ id_type Game::get_userid(const char *uid) {
 	return this->db.get_userid(uid);
 }
 
-const Map &Game::get_map() const{
+const Map &Game::get_map() const {
 	return this->map;
 }
 
