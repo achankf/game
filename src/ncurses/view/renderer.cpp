@@ -1,14 +1,19 @@
 #include "base/model/map.h"
 #include "base/model/game.h"
+#include "base/control/cursor.h"
 #include "ncurses/view/renderer.h"
 #include <ncurses.h>
 #include <iostream>
+#include <tuple>
 using namespace NCurses::View;
 
 Renderer::Renderer() {
 	int rv = 0;
 
 	initscr();
+
+	curs_set(0);
+
 	if(has_colors() == FALSE) {
 		endwin();
 		std::cerr << "Your terminal does not support color" << std::endl;
@@ -43,7 +48,7 @@ void Renderer::render_terrain(::Base::Model::Game &game, int i, int j, scalar_t 
 	const ::Base::Model::Map &map = game.get_map();
 
 	Colour colour;
-	double val = map.getBaseTile(0.5 + x, 0.5 + y);
+	double val = map.getBaseTile(x, y);
 
 	switch (map.baseToTile(val)) {
 	case ::Base::Model::Map::DEEP:
@@ -73,16 +78,16 @@ void Renderer::render_terrain(::Base::Model::Game &game, int i, int j, scalar_t 
 	attroff(COLOR_PAIR(colour));
 }
 
-void Renderer::render_cursor(::Base::Model::Game &game, scalar_t x, scalar_t y) {
-	(void) game;
-	(void) x;
-	(void) y;
+void Renderer::render_cursor(::Base::Model::Game &game, ::Base::Control::Cursor &cursor) {
 	const ::Base::Model::Map &map = game.get_map();
 
-	double val = map.getBaseTile(0.5 + x, 0.5 + y);
+	scalar_t x,y,z;
+	std::tie(x,y,z) = cursor;
+
+	double val = map.getBaseTile(x, y);
 	Colour colour = tile_type_to_colour(map.baseToTile(val));
 	attron(COLOR_PAIR(colour));
-	mvwprintw(stdscr, y, x, " ");
+	mvwprintw(stdscr, y, x, "%c", 254);
 	attroff(COLOR_PAIR(colour));
 }
 

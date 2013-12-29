@@ -7,16 +7,18 @@ namespace Base {
 namespace Model {
 class Game;
 }
+
+namespace Control {
+class Cursor;
 }
 
-namespace Base {
 namespace View {
 
 class Renderer {
 public:
 	virtual ~Renderer() {}
 	virtual void render_terrain(::Base::Model::Game &game, int i, int j, scalar_t x, scalar_t y) = 0;
-	virtual void render_cursor(::Base::Model::Game &game, scalar_t x, scalar_t y) = 0;
+	virtual void render_cursor(::Base::Model::Game &game, ::Base::Control::Cursor &cursor) = 0;
 };
 
 }

@@ -4,19 +4,26 @@
 #include "../../base/view/renderable.h"
 
 namespace Base {
-namespace View {
-class Renderer;
-}
-}
-
-namespace NCurses {
 
 namespace Control {
 
 class Cursor : public coor_t, public ::Base::View::Renderable {
+protected:
+	scalar_t &get_x();
+	scalar_t &get_y();
+	scalar_t &get_z();
 public:
+	Cursor();
 	Cursor(scalar_t x, scalar_t y, scalar_t z);
 	void render(::Base::Model::Game &game, ::Base::View::Renderer &renderer);
+	void north();
+	void south();
+	void east();
+	void west();
+	void north_east();
+	void north_west();
+	void south_east();
+	void south_west();
 };
 
 }

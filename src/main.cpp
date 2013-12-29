@@ -12,39 +12,42 @@
 #include "ncurses/view/renderer.h"
 #include "ncurses/control/controller.h"
 
-static void run(Base::Model::Game &game,
+static void run(int argc, char **argv,
+                Base::Model::Game &game,
                 Base::View::Renderer &renderer,
                 Base::Control::Controller &controller) {
 
 	(void) renderer;
+	const char *pname = "alfred";
 
-	Base::Model::Player player(game, "alfred");
+	if (argc == 3) pname = argv[2];
+	Base::Model::Player player(game, pname);
 	controller.event_loop(player);
 }
 
-inline void runNCurses(::Base::Model::Game &game) {
+static void runNCurses(int argc, char **argv, ::Base::Model::Game &game) {
 	using namespace NCurses;
 	View::Renderer renderer;
 	Control::Controller controller(game, renderer);
 
-	run(game, renderer, controller);
+	run(argc, argv, game, renderer, controller);
 }
 
-inline void runNull(::Base::Model::Game &game) {
+static void runNull(int argc, char **argv, ::Base::Model::Game &game) {
 	using namespace Null;
 	View::Renderer renderer;
 	Control::Controller controller(game, renderer);
 
-	run(game, renderer, controller);
+	run(argc, argv, game, renderer, controller);
 }
 
-inline void setup(int argc, char **argv) {
+static void setup(int argc, char **argv) {
 	::Base::Model::Game game;
 
 	if (argc == 1 || std::strcmp("ncurses", argv[1]) == 0) {
-		runNCurses(game);
+		runNCurses(argc, argv, game);
 	} else if (std::strcmp("null", argv[1]) == 0) {
-		runNull(game);
+		runNull(argc, argv, game);
 	} else {
 		std::cerr << "Invalid display/controlling model" << std::endl;
 		throw std::exception();

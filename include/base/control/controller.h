@@ -1,6 +1,8 @@
 #ifndef _base_controller_h_
 #define _base_controller_h_
 
+#include "cursor.h"
+
 namespace Rendering {
 class Renderer;
 }
@@ -19,6 +21,7 @@ class Controller {
 protected:
 	::Base::Model::Game &game;
 	::Base::View::Renderer &renderer;
+	::Base::Control::Cursor cursor;
 
 public:
 	Controller(

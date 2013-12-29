@@ -15,7 +15,7 @@ void Locatable::update_coor(Game &game, scalar_t x, scalar_t y, scalar_t z) {
 	(void)game;
 }
 
-void Locatable::get_coor(Game &game, coor_t &coor) {
-	(void)coor;
+coor_t Locatable::get_coor(Game &game) {
 	(void)game;
+	return coor_t(0,0,0);
 }

@@ -3,19 +3,6 @@
 
 #include "../../base/control/controller.h"
 
-namespace Base {
-namespace Model {
-class Player;
-class Map;
-class Game;
-}
-
-namespace View {
-class Renderer;
-}
-
-}
-
 namespace Null {
 
 namespace Control {

@@ -1,6 +1,7 @@
 CC = g++
+CFLAGS = -Os
 CFLAGS += -std=c++11 -ggdb -Wall -Werror -pedantic -pedantic-errors -Wextra -Winit-self -Wold-style-cast -Woverloaded-virtual -Wuninitialized -Wmissing-declarations
-CFLAGS += -Iinclude
+INCLUDES = -Iinclude
 LDLIBS += -lncurses -lnoise -lsqlite3
 SOURCES = $(shell find -name "*.cpp")
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -16,9 +17,9 @@ $(EXE) : $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDLIBS) $^ -o $@
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $< -c -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) $< -c -o $@
 
-.phony : clean style
+.phony : clean style strip
 
 clean :
 	rm -f $(OBJECTS)
@@ -26,3 +27,6 @@ clean :
 style :
 	find -name "*.cpp" -exec astyle --indent=tab --style=java {} \;
 	find -name "*.h" -exec astyle --indent=tab --style=java {} \;
+
+strip : $(EXE)
+	strip $<

@@ -5,12 +5,6 @@
 #include "../../base/view/renderable.h"
 #include "../../type.h"
 
-namespace Base {
-namespace Model {
-class Game;
-}
-}
-
 namespace NCurses {
 namespace View {
 
@@ -22,7 +16,7 @@ public:
 	Renderer();
 	virtual ~Renderer();
 	void render_terrain(::Base::Model::Game &game, int i, int j, scalar_t x, scalar_t y);
-	void render_cursor(::Base::Model::Game &game, scalar_t x, scalar_t y);
+	void render_cursor(::Base::Model::Game &game, ::Base::Control::Cursor &cursor);
 
 protected:
 	Colour tile_type_to_colour(::Base::Model::Map::TileType type);

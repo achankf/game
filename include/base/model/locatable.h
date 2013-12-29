@@ -15,7 +15,7 @@ protected:
 public:
 	Locatable(Game &game, id_type lid);
 	void update_coor(Game &game, scalar_t x, scalar_t y, scalar_t z);
-	void get_coor(Game &game, coor_t &coor);
+	coor_t get_coor(Game &game);
 };
 
 }
