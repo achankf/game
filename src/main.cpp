@@ -1,16 +1,14 @@
 #include <iostream>
-#include <random>
 #include <cstring>
-#include <noise/noise.h>
 #include "randgen.h"
 #include "base/model/player.h"
-#include "base/model/map.h"
 #include "base/model/game.h"
-#include "base/view/renderer.h"
 #include "null/view/renderer.h"
 #include "null/control/controller.h"
 #include "ncurses/view/renderer.h"
 #include "ncurses/control/controller.h"
+#include "sfml/view/renderer.h"
+#include "sfml/control/controller.h"
 
 static void run(int argc, char **argv,
                 Base::Model::Game &game,
@@ -26,17 +24,22 @@ static void run(int argc, char **argv,
 }
 
 static void runNCurses(int argc, char **argv, ::Base::Model::Game &game) {
-	using namespace NCurses;
-	View::Renderer renderer;
-	Control::Controller controller(game, renderer);
+	NCurses::View::Renderer renderer;
+	NCurses::Control::Controller controller(game, renderer);
 
 	run(argc, argv, game, renderer, controller);
 }
 
 static void runNull(int argc, char **argv, ::Base::Model::Game &game) {
-	using namespace Null;
-	View::Renderer renderer;
-	Control::Controller controller(game, renderer);
+	NCurses::View::Renderer renderer;
+	NCurses::Control::Controller controller(game, renderer);
+
+	run(argc, argv, game, renderer, controller);
+}
+
+static void runSFML(int argc, char **argv, ::Base::Model::Game &game) {
+	SFML::View::Renderer renderer;
+	SFML::Control::Controller controller(game, renderer);
 
 	run(argc, argv, game, renderer, controller);
 }
@@ -44,7 +47,9 @@ static void runNull(int argc, char **argv, ::Base::Model::Game &game) {
 static void setup(int argc, char **argv) {
 	::Base::Model::Game game;
 
-	if (argc == 1 || std::strcmp("ncurses", argv[1]) == 0) {
+	if (argc == 1 || std::strcmp("sfml", argv[1]) == 0) {
+		runSFML(argc, argv, game);
+	} else if (std::strcmp("ncurses", argv[1]) == 0) {
 		runNCurses(argc, argv, game);
 	} else if (std::strcmp("null", argv[1]) == 0) {
 		runNull(argc, argv, game);

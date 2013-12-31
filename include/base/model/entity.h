@@ -1,5 +1,5 @@
-#ifndef _creature_h_
-#define _creature_h_
+#ifndef _entity_h_
+#define _entity_h_
 
 #include "locatable.h"
 #include "../view/renderable.h"
@@ -14,13 +14,13 @@ namespace Model {
 
 class Game;
 
-class Creature
+class Entity
 	: public ::Base::View::Renderable
-		, public Locatable {
+	, public Locatable {
 protected:
 	id_type cid;
 public:
-	Creature(Game &game, id_type cid);
+	Entity(Game &game, id_type cid);
 };
 
 }

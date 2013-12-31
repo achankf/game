@@ -2,6 +2,7 @@
 #define _map_h_
 
 #include <noise/noise.h>
+#include <utility>
 #include "../view/renderable.h"
 
 namespace Base {
@@ -19,11 +20,12 @@ class Map : public ::Base::View::Renderable {
 	const int length, width;
 
 public:
-	enum Config {MAP_LENGTH = 70, MAP_WIDTH = 30};
+	enum Config {MAP_LENGTH = 60, MAP_WIDTH = 40};
 	enum TileType {DEEP, SHALLOW, PLAIN, GRASS, HILL, SNOW};
 
 	Map(int seed, int length = MAP_LENGTH, int width = MAP_WIDTH);
 	double getBaseTile(double x, double y, double z = 100) const;
+	std::pair<double, double> getHeightPair(double x, double y, double z = 100) const;
 
 	int getLength();
 	int getWidth();

@@ -5,11 +5,6 @@ create table player (
 	uid varchar(10) not null unique
 );
 
-create table creature_type(
-	tid integer primary key autoincrement,
-	name varchar(20) not null unique
-);
-
 create table locatable (
 	lid integer primary key autoincrement,
 	x float not null,
@@ -19,29 +14,48 @@ create table locatable (
 
 create index idx_locatable on locatable(x,y,z);
 
-create table creature (
-	cid integer primary key autoincrement,
+create table entity (
+	eid integer primary key autoincrement,
 	own_by integer not null references player,
-	birthday integer not null default 0,
-	type integer not null references creature_type,
 	lid integer not null references locatable
 );
 
-create table skill (
+create table race(
+	rid integer primary key autoincrement,
+	name varchar(20) not null unique
+);
+
+create table living_entity(
+	eid integer not null primary key references entity,
+	rid integer not null references race,
+	birthday integer not null default 0
+);
+
+create table ability (
 	sid integer primary key autoincrement,
 	name varchar(20) not null unique,
 	value float not null
 );
 
-create table has_skill (
-	cid integer not null references creature,
-	sid integer not null references skill,
-	proficiency float not null default 0,
-	check (proficiency between 0 and 1),
+create table object_type(
+	oid integer primary key autoincrement,
+	name varchar(20) not null unique
+);
+
+create table object_entity(
+	eid integer not null primary key references entity,
+	oid integer not null references object_type
+);
+
+create table has_ability (
+	cid integer not null references entity,
+	sid integer not null references ability,
+	value float not null default 0,
+	check (value between 0 and 1),
 	primary key(cid, sid)
 );
 
 -- create_type
-insert into creature_type (name) values ('HUMAN');
+insert into race(name) values ('HUMAN');
 
 commit;

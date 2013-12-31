@@ -50,6 +50,9 @@ void Renderer::render_terrain(::Base::Model::Game &game, int i, int j, scalar_t 
 	Colour colour;
 	double val = map.getBaseTile(x, y);
 
+	//if (val < 0.0 || val > 0.25) return;
+	//if (val > 0.6) return;
+
 	switch (map.baseToTile(val)) {
 	case ::Base::Model::Map::DEEP:
 		colour = Renderer::BLUE;
