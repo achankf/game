@@ -1,14 +1,19 @@
 CC = g++
+INCLUDES = -Iinclude
 CFLAGS = -Os
 CFLAGS += -std=c++11 -ggdb -Wall -Werror -pedantic -pedantic-errors -Wextra -Winit-self -Wold-style-cast -Woverloaded-virtual -Wuninitialized -Wmissing-declarations
-INCLUDES = -Iinclude
+CPPFLAGS = $(INCLUDES) -MMD
 LDLIBS += -lncurses -lnoise -lsqlite3 -lsfml-graphics -lsfml-window -lsfml-system
 SOURCES = $(shell find -name "*.cpp")
+HEADERS = $(shell find -name "*.h")
 OBJECTS = $(SOURCES:.cpp=.o)
+DEPENDS = $(SOURCES:.cpp=.d)
 EXE = main
 DB = save.db
 
 all : $(EXE) $(DB)
+
+-include $(DEPENDS)
 
 $(DB) : 
 	[ -f save.db ] && echo "Database already exists" || sqlite3 save.db < gamedb.sql
@@ -17,7 +22,7 @@ $(EXE) : $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDLIBS) $^ -o $@
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) $< -c -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) $< -c -o $@
 
 .phony : clean style strip
 
