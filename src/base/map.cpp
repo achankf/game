@@ -9,41 +9,21 @@ Map::Map(int seed, int length, int width)
 	perlin.SetPersistence (0.55);
 }
 
-double Map::getBaseTile(double x, double y, double z) const {
-	return this->perlin.GetValue(x,y,z);
+double Map::get_height(int i, int j) const{
+	const double fac = 0.1;
+	const double x = fac * i;
+	const double y = fac * j;
+	return this->perlin.GetValue(x,y,1);
 }
 
-int Map::getLength() {
+int Map::getLength() const {
 	return this->length;
 }
 
-int Map::getWidth() {
+int Map::getWidth() const {
 	return this->width;
 }
 
-Map::TileType Map::baseToTile(double val) const {
-	if (val < -0.1) return DEEP;
-	else if (val < 0) return SHALLOW;
-	else if (val < 0.25) return GRASS;
-	else if (val < 0.6) return PLAIN;
-	else if (val < 0.9) return HILL;
-	else return SNOW;
-}
-
 void Map::render(::Base::Model::Game &game, ::Base::View::Renderer &renderer) {
-	for (int i = 0; i < this->getLength(); i++) {
-		for (int j = 0; j < this->getWidth(); j++) {
-			renderer.render_terrain(game, i,j,i, j);
-		}
-	}
-}
-
-std::pair<double, double> Map::getHeightPair(double x, double y, double z) const {
-	double val = this->perlin.GetValue(x,y,z);
-	TileType tt;
-	if (val < -0.1) tt = DEEP;
-	else if (val < 0) tt = SHALLOW;
-	else if (val < 0.6) tt = GRASS;
-	else tt = HILL;
-	return std::pair<double,double>(val,tt);
+	renderer.render_map(game);
 }

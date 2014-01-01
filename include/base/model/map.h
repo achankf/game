@@ -24,12 +24,9 @@ public:
 	enum TileType {DEEP, SHALLOW, PLAIN, GRASS, HILL, SNOW};
 
 	Map(int seed, int length = MAP_LENGTH, int width = MAP_WIDTH);
-	double getBaseTile(double x, double y, double z = 100) const;
-	std::pair<double, double> getHeightPair(double x, double y, double z = 100) const;
-
-	int getLength();
-	int getWidth();
-	TileType baseToTile(double val) const;
+	double get_height(int i, int j) const;
+	int getLength() const;
+	int getWidth() const;
 	void render(::Base::Model::Game &game, ::Base::View::Renderer &renderer);
 };
 

@@ -23,6 +23,7 @@ void Controller::event_loop(
 ) {
 
 	(void) player;
+	bool change = true;
 
 	sf::RenderWindow &window = static_cast<::SFML::View::Renderer&>(this->renderer).get_window();
 	while (window.isOpen()) {
@@ -30,10 +31,15 @@ void Controller::event_loop(
 		while (window.pollEvent(event)) {
 			if (event.type == sf::Event::Closed) window.close();
 			else if (event.type == sf::Event::TextEntered) this->handle_key(window, event.text.unicode);
+			else continue;
+			change = true;
 		}
-		window.clear(sf::Color::Black);
-		this->game.update_all_views(this->renderer);
+		if (change){
+			window.clear(sf::Color::Black);
+			this->game.update_all_views(this->renderer);
+		}
 		window.display();
+		change = false;
 	}
 }
 
@@ -44,8 +50,12 @@ void Controller::handle_key(sf::RenderWindow &window, int c) {
 	}
 
 	switch(c) {
-	case 'q':
-		window.close();
-		break;
+	case 'q': window.close(); break;
+	case 'w': cursor.north_west(); break;
+	case 'e': cursor.north_east(); break;
+	case 'd': cursor.east(); break;
+	case 'a': cursor.west(); break;
+	case 'z': cursor.south_west(); break;
+	case 'x': cursor.south_east(); break;
 	}
 }
