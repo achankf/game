@@ -1,5 +1,6 @@
 #include "base/model/map.h"
 #include "base/view/renderer.h"
+#include "base/control/controller.h"
 using namespace Base::Model;
 
 Map::Map(int seed, int length, int width)
@@ -27,6 +28,10 @@ int Map::getWidth() const {
 	return this->width;
 }
 
-void Map::render(::Base::Model::Game &game, ::Base::View::Renderer &renderer) {
+void Map::render(
+    ::Base::Model::Game &game,
+    ::Base::View::Renderer &renderer,
+    ::Base::Control::Controller &controller) {
+	(void) controller;
 	renderer.renderMap(game);
 }

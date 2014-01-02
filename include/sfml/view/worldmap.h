@@ -5,15 +5,6 @@
 #include <SFML/Graphics.hpp>
 #include "base/view/renderable.h"
 
-namespace Base {
-namespace Model {
-class Game;
-}
-namespace View {
-class Renderer;
-}
-}
-
 namespace SFML {
 namespace View {
 class WorldMap : public ::Base::View::Renderable {
@@ -26,7 +17,10 @@ public:
 	virtual ~WorldMap();
 	std::tuple<sf::Uint8, sf::Uint8, sf::Uint8> heightToColour(double height) const;
 	const sf::Sprite &getSprite() const;
-	void render(::Base::Model::Game &game, ::Base::View::Renderer &renderer);
+	void render(
+	    ::Base::Model::Game &game,
+	    ::Base::View::Renderer &renderer,
+	    ::Base::Control::Controller &controller);
 };
 }
 }

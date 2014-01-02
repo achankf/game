@@ -34,9 +34,6 @@ Renderer::Renderer(::Base::Model::Game &game)
 	hexagon.setOutlineColor(sf::Color::Black);
 }
 
-Renderer::~Renderer() {
-}
-
 sf::RenderWindow &Renderer::getWindow() {
 	return this->window;
 }
@@ -46,8 +43,8 @@ void Renderer::renderMap(::Base::Model::Game &game) {
 	const auto dim = this->window.getSize();
 	const int dlength = dim.x;
 	const int dwidth = dim.y;
-	const int hfit = std::min(dlength / edge_twice + 1, map.getLength());
-	const int vfit = std::min(dwidth / edge_with_half + 1, map.getWidth());
+	const int hfit = std::min(dlength / edge_twice + 2, map.getLength());
+	const int vfit = std::min(dwidth / edge_with_half + 2, map.getWidth());
 
 	for (int i = 0; i < hfit; i++) {
 		for (int j = 0; j < vfit; j++) {
@@ -64,7 +61,7 @@ void Renderer::renderTerrain(::Base::Model::Game &game, int i, int j) {
 	const int newi = i * edge_twice + j * edge;
 	const int newj = j * edge_with_half - edge_half;
 	auto val = map.getHeight(i,j);
-	int r,b,g;
+	int r,g,b;
 	std::tie(r,g,b) = this->worldmap.heightToColour(val);
 	hexagon.setPosition(newi, newj);
 	hexagon.setFillColor(sf::Color(r,g,b));
@@ -79,10 +76,10 @@ void Renderer::renderCursor(
 	scalar_t x,y,z;
 	std::tie(x,y,z) = cursor;
 
-	int newi = x * edge_twice + y * edge;
-	int newj = y * edge_with_half - edge_half;
+	const int newi = x * edge_twice + y * edge;
+	const int newj = y * edge_with_half - edge_half;
 
-	int r,b,g;
+	int r,g,b;
 	r = g = b = 0x00;
 
 	hexagon.setPosition(newi, newj);
@@ -92,12 +89,4 @@ void Renderer::renderCursor(
 
 void Renderer::toggleWorldMap() {
 	this->worldmap.toggle();
-}
-
-void Renderer::renderAll(::Base::Model::Game &game) {
-	game.updateAllViews(*this);
-}
-
-void Renderer::renderUI(::Base::Model::Game &game) {
-	(void) game;
 }

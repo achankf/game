@@ -7,13 +7,7 @@
 
 namespace Base {
 
-namespace View {
-class Renderer;
-}
-
 namespace Model {
-
-class Game;
 
 class Map : public ::Base::View::Renderable {
 	noise::module::Perlin perlin;
@@ -27,7 +21,10 @@ public:
 	double getHeight(int i, int j) const;
 	int getLength() const;
 	int getWidth() const;
-	void render(::Base::Model::Game &game, ::Base::View::Renderer &renderer);
+	void render(
+	    ::Base::Model::Game &game,
+	    ::Base::View::Renderer &renderer,
+	    ::Base::Control::Controller &controller);
 };
 
 }

@@ -1,23 +1,19 @@
 #ifndef _base_controller_h_
 #define _base_controller_h_
 
+#include "base/view/renderable.h"
 #include "cursor.h"
-
-namespace Rendering {
-class Renderer;
-}
 
 namespace Base {
 
 namespace Model {
-class Game;
 class Map;
 class Player;
 }
 
 namespace Control {
 
-class Controller {
+class Controller : public ::Base::View::RenderableList {
 protected:
 	::Base::Model::Game &game;
 	::Base::View::Renderer &renderer;

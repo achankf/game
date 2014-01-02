@@ -16,15 +16,14 @@ class Renderer : public ::Base::View::Renderer {
 
 	std::tuple<sf::Uint8, sf::Uint8, sf::Uint8> heightToColour(double height);
 protected:
-	void renderUI(::Base::Model::Game &game);
 	void renderTerrain(::Base::Model::Game &game, int i, int j);
 public:
 	Renderer(::Base::Model::Game &game);
-	~Renderer();
 	void renderMap(::Base::Model::Game &game);
-	void renderCursor(::Base::Model::Game &game, ::Base::Control::Cursor &cursor);
+	void renderCursor(
+	    ::Base::Model::Game &game,
+	    ::Base::Control::Cursor &cursor);
 	void toggleWorldMap();
-	void renderAll(::Base::Model::Game &game);
 	sf::RenderWindow &getWindow();
 };
 

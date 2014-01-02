@@ -53,8 +53,11 @@ const sf::Sprite &WorldMap::getSprite() const {
 	return this->spr;
 }
 
-void WorldMap::render(::Base::Model::Game &game, ::Base::View::Renderer &renderer) {
+void WorldMap::render(::Base::Model::Game &game,
+                      ::Base::View::Renderer &renderer,
+                      ::Base::Control::Controller &controller) {
 	(void)game;
+	(void) controller;
 	if (!this->show) return;
 	Renderer &ren = static_cast<Renderer &>(renderer);
 	ren.getWindow().draw(this->spr);

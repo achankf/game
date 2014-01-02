@@ -1,6 +1,7 @@
 #include "base/model/game.h"
 #include "base/view/renderer.h"
 #include "base/control/cursor.h"
+#include "base/control/controller.h"
 using namespace Base::Control;
 
 Cursor::Cursor() : coor_t(0,0,0) {}
@@ -9,7 +10,11 @@ Cursor::Cursor(scalar_t x, scalar_t y, scalar_t z)
 	: coor_t(x,y,z) {
 }
 
-void Cursor::render(::Base::Model::Game &game, ::Base::View::Renderer &renderer) {
+void Cursor::render(
+    ::Base::Model::Game &game,
+    ::Base::View::Renderer &renderer,
+    ::Base::Control::Controller &controller) {
+	(void) controller;
 	renderer.renderCursor(game, *this);
 }
 

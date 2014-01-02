@@ -4,11 +4,9 @@
 #include "base/model/game.h"
 #include "base/model/map.h"
 #include "base/model/player.h"
-#include "base/view/renderer.h"
 #include "base/control/cursor.h"
 #include "sfml/view/renderer.h"
 #include "sfml/control/controller.h"
-
 using namespace SFML::Control;
 
 Controller::Controller(
@@ -36,7 +34,7 @@ void Controller::event_loop(
 		}
 		if (change) {
 			window.clear(sf::Color::Black);
-			this->game.updateAllViews(this->renderer);
+			this->game.updateAllViews(this->game, this->renderer, *this);
 		}
 		window.display();
 		change = false;
