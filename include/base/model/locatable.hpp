@@ -1,7 +1,7 @@
-#ifndef _locatable_h_
-#define _locatable_h_
+#ifndef _base_locatable_hpp_
+#define _base_locatable_hpp_
 
-#include "type.h"
+#include "type.hpp"
 
 namespace Base {
 

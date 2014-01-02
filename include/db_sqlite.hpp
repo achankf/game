@@ -1,8 +1,8 @@
-#ifndef _db_sqlite_h_
-#define _db_sqlite_h_
+#ifndef _db_sqlite_hpp_
+#define _db_sqlite_hpp_
 
 #include <sqlite3.h>
-#include "database.h"
+#include "database.hpp"
 
 class SQLite3Database {
 protected:

@@ -1,7 +1,7 @@
-#ifndef _player_h_
-#define _player_h_
+#ifndef _base_player_hpp_
+#define _base_player_hpp_
 
-#include "../../type.h"
+#include "type.hpp"
 
 namespace Base {
 namespace Model {

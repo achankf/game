@@ -1,8 +1,7 @@
-#include "base/model/map.h"
-#include "base/model/game.h"
-#include "base/control/cursor.h"
-#include "sfml/view/renderer.h"
-#include <ncurses.h>
+#include "base/model/map.hpp"
+#include "base/model/game.hpp"
+#include "base/control/cursor.hpp"
+#include "sfml/view/renderer.hpp"
 #include <iostream>
 #include <algorithm>
 #include <tuple>
@@ -57,11 +56,14 @@ void Renderer::renderMap(::Base::Model::Game &game) {
 
 void Renderer::renderTerrain(::Base::Model::Game &game, int i, int j) {
 
+	int startx = 20;
+	int starty = 100;
+
 	const auto &map = game.getMap();
 	const int newi = i * edge_twice + j * edge;
 	const int newj = j * edge_with_half - edge_half;
-	auto val = map.getHeight(i,j);
-	int r,g,b;
+	auto val = map.getHeight(i + startx,j + starty);
+	sf::Uint8 r,g,b;
 	std::tie(r,g,b) = this->worldmap.heightToColour(val);
 	hexagon.setPosition(newi, newj);
 	hexagon.setFillColor(sf::Color(r,g,b));
@@ -79,7 +81,7 @@ void Renderer::renderCursor(
 	const int newi = x * edge_twice + y * edge;
 	const int newj = y * edge_with_half - edge_half;
 
-	int r,g,b;
+	sf::Uint8 r,g,b;
 	r = g = b = 0x00;
 
 	hexagon.setPosition(newi, newj);

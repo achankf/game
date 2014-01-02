@@ -1,8 +1,8 @@
 #include <cstring>
 #include <iostream>
 #include <cassert>
-#include "gamedb.h"
-#include "invalid_arg.h"
+#include "gamedb.hpp"
+#include "invalid_arg.hpp"
 
 namespace SQL {
 //const char *player_exists = "select exists (select * from player where uid = ?)";

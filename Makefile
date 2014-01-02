@@ -6,7 +6,7 @@ CFLAGS += -std=c++11 -pipe -ggdb -Wall -Werror -pedantic -pedantic-errors -Wextr
 CPPFLAGS = $(INCLUDES) -MMD
 LDLIBS += -lncurses -lnoise -lsqlite3 -lsfml-graphics -lsfml-window -lsfml-system
 SOURCES = $(shell find -name "*.cpp")
-HEADERS = $(shell find -name "*.h")
+HEADERS = $(shell find -name "*.hpp")
 OBJECTS = $(SOURCES:.cpp=.o)
 DEPENDS = $(SOURCES:.cpp=.d)
 EXE = main
@@ -32,7 +32,7 @@ clean :
 
 style :
 	find -name "*.cpp" -exec astyle --indent=tab --style=java {} \;
-	find -name "*.h" -exec astyle --indent=tab --style=java {} \;
+	find -name "*.hpp" -exec astyle --indent=tab --style=java {} \;
 
 strip : $(EXE)
 	strip $<

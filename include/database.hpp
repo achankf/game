@@ -1,5 +1,5 @@
-#ifndef _database_h_
-#define _database_h_
+#ifndef _database_hpp_
+#define _database_hpp_
 
 class Transaction {
 	void finish();

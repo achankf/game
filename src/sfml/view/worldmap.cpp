@@ -1,6 +1,6 @@
-#include "base/model/game.h"
-#include "sfml/view/renderer.h"
-#include "sfml/view/worldmap.h"
+#include "base/model/game.hpp"
+#include "sfml/view/renderer.hpp"
+#include "sfml/view/worldmap.hpp"
 using namespace SFML::View;
 
 WorldMap::WorldMap(::Base::Model::Game &game) {
@@ -12,7 +12,7 @@ WorldMap::WorldMap(::Base::Model::Game &game) {
 	for (int i = 0; i < length; i++) {
 		for (int j = 0; j < width; j++) {
 			int idx = (i + j * width) * 4;
-			int r,g,b;
+			sf::Uint8 r,g,b;
 			const double val = map.getHeight(i,j);
 			std::tie(r,g,b) = this->heightToColour(val);
 			buf[idx] = r;
@@ -33,7 +33,7 @@ WorldMap::~WorldMap() {
 }
 
 std::tuple<sf::Uint8, sf::Uint8, sf::Uint8> WorldMap::heightToColour(double height) const {
-	int r, g, b;
+	sf::Uint8 r, g, b;
 	if (height < -0.95) r = 0x00, b = 0x60, g = 0x00;
 	else if (height < -0.9) r = 0x00, b = 0x60, g = 0x00;
 	else if (height < -0.7) r = 0x00, b = 0x80, g = 0x00;
@@ -47,10 +47,6 @@ std::tuple<sf::Uint8, sf::Uint8, sf::Uint8> WorldMap::heightToColour(double heig
 	else if (height < 0.97) r = 0x20, b = 0x20, g = 0x20;
 	else r = 0xff, b = 0xff, g = 0xff;
 	return std::tuple<sf::Uint8,sf::Uint8,sf::Uint8>(r,g,b);
-}
-
-const sf::Sprite &WorldMap::getSprite() const {
-	return this->spr;
 }
 
 void WorldMap::render(::Base::Model::Game &game,

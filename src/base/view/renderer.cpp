@@ -1,7 +1,6 @@
-#include "base/model/game.h"
-#include "base/view/renderer.h"
-#include "base/view/renderable.h"
-#include "base/control/controller.h"
+#include "base/model/game.hpp"
+#include "base/view/renderer.hpp"
+#include "base/control/controller.hpp"
 using namespace Base::View;
 
 Renderer::~Renderer() {

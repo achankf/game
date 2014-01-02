@@ -1,7 +1,7 @@
-#ifndef _renderer_h_
-#define _renderer_h_
+#ifndef _base_renderer_hpp_
+#define _base_renderer_hpp_
 
-#include "type.h"
+#include "type.hpp"
 
 namespace Base {
 namespace Model {

@@ -1,8 +1,8 @@
-#ifndef _controller_sfml_h_
-#define _controller_sfml_h_
+#ifndef _sfml_controller_hpp_
+#define _sfml_controller_hpp_
 
 #include <SFML/Graphics.hpp>
-#include "base/control/controller.h"
+#include "base/control/controller.hpp"
 
 namespace SFML {
 

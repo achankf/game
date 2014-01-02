@@ -1,9 +1,9 @@
-#ifndef _map_h_
-#define _map_h_
+#ifndef _basemap_hpp_
+#define _basemap_hpp_
 
 #include <noise/noise.h>
 #include <utility>
-#include "../view/renderable.h"
+#include "base/view/renderable.hpp"
 
 namespace Base {
 

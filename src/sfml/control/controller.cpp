@@ -1,12 +1,11 @@
-#include <ncurses.h>
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "base/model/game.h"
-#include "base/model/map.h"
-#include "base/model/player.h"
-#include "base/control/cursor.h"
-#include "sfml/view/renderer.h"
-#include "sfml/control/controller.h"
+#include "base/model/game.hpp"
+#include "base/model/map.hpp"
+#include "base/model/player.hpp"
+#include "base/control/cursor.hpp"
+#include "sfml/view/renderer.hpp"
+#include "sfml/control/controller.hpp"
 using namespace SFML::Control;
 
 Controller::Controller(
@@ -52,22 +51,22 @@ void Controller::handle_key(sf::RenderWindow &window, int c) {
 		window.close();
 		break;
 	case 'w':
-		this->cursor.north_west();
+		this->cursor.north_west(this->game);
 		break;
 	case 'e':
-		this->cursor.north_east();
+		this->cursor.north_east(this->game);
 		break;
 	case 'd':
-		this->cursor.east();
+		this->cursor.east(this->game);
 		break;
 	case 's':
-		this->cursor.west();
+		this->cursor.west(this->game);
 		break;
 	case 'x':
-		this->cursor.south_west();
+		this->cursor.south_west(this->game);
 		break;
 	case 'c':
-		this->cursor.south_east();
+		this->cursor.south_east(this->game);
 		break;
 	case 'm':
 		this->getRenderer().toggleWorldMap();

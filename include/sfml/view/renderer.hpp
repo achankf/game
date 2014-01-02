@@ -1,9 +1,9 @@
-#ifndef _renderer_sfml_h_
-#define _renderer_sfml_h_
+#ifndef _sfml_renderer_h_
+#define _sfml_renderer_h_
 
-#include "type.h"
-#include "base/view/renderer.h"
-#include "sfml/view/worldmap.h"
+#include "type.hpp"
+#include "base/view/renderer.hpp"
+#include "sfml/view/worldmap.hpp"
 #include <SFML/Graphics.hpp>
 
 namespace SFML {

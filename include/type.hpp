@@ -1,5 +1,5 @@
-#ifndef _type_h_
-#define _type_h_
+#ifndef _type_hpp_
+#define _type_hpp_
 
 #include <tuple>
 #include <stdint.h>

@@ -1,5 +1,5 @@
-#ifndef _randgen_h_
-#define _randgen_h_
+#ifndef _randgen_hpp_
+#define _randgen_hpp_
 
 #include <random>
 

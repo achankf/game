@@ -1,14 +1,10 @@
-#ifndef _entity_h_
-#define _entity_h_
+#ifndef _base_entity_hpp_
+#define _base_entity_hpp_
 
-#include "locatable.h"
-#include "../view/renderable.h"
+#include "locatable.hpp"
+#include "base/view/renderable.hpp"
 
 namespace Base {
-
-namespace View {
-class Renderer;
-}
 
 namespace Model {
 

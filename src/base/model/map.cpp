@@ -1,6 +1,6 @@
-#include "base/model/map.h"
-#include "base/view/renderer.h"
-#include "base/control/controller.h"
+#include "base/model/map.hpp"
+#include "base/view/renderer.hpp"
+#include "base/control/controller.hpp"
 using namespace Base::Model;
 
 Map::Map(int seed, int length, int width)

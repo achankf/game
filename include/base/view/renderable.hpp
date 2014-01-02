@@ -1,5 +1,5 @@
-#ifndef _renderable_h_
-#define _renderable_h_
+#ifndef _base_renderable_hpp_
+#define _base_renderable_hpp_
 
 #include <list>
 

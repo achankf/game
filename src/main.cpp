@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstring>
-#include "randgen.h"
-#include "base/model/player.h"
-#include "base/model/game.h"
-#include "sfml/view/renderer.h"
-#include "sfml/control/controller.h"
+#include "randgen.hpp"
+#include "base/model/player.hpp"
+#include "base/model/game.hpp"
+#include "sfml/view/renderer.hpp"
+#include "sfml/control/controller.hpp"
 
 static void run(int argc, char **argv,
                 Base::Model::Game &game,

@@ -1,8 +1,8 @@
-#ifndef _gamedb_h_
-#define _gamedb_h_
+#ifndef _gamedb_hpp_
+#define _gamedb_hpp_
 
-#include "db_sqlite.h"
-#include "type.h"
+#include "db_sqlite.hpp"
+#include "type.hpp"
 
 namespace SQL {
 enum Query {

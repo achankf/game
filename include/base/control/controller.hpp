@@ -1,8 +1,8 @@
-#ifndef _base_controller_h_
-#define _base_controller_h_
+#ifndef _base_controller_hpp_
+#define _base_controller_hpp_
 
-#include "base/view/renderable.h"
-#include "cursor.h"
+#include "base/view/renderable.hpp"
+#include "cursor.hpp"
 
 namespace Base {
 

@@ -1,7 +1,7 @@
-#include "base/model/game.h"
-#include "base/model/map.h"
-#include "base/view/renderer.h"
-#include "gamedb.h"
+#include "base/model/game.hpp"
+#include "base/model/map.hpp"
+#include "base/view/renderer.hpp"
+#include "gamedb.hpp"
 using namespace Base::Model;
 
 enum Config {MAP_LENGTH = 700, MAP_WIDTH = 700};

@@ -1,9 +1,9 @@
-#ifndef _worldmap_sfml_h_
-#define _worldmap_sfml_h_
+#ifndef _sfml_worldmap_hpp_
+#define _sfml_worldmap_hpp_
 
 #include <tuple>
 #include <SFML/Graphics.hpp>
-#include "base/view/renderable.h"
+#include "base/view/renderable.hpp"
 
 namespace SFML {
 namespace View {
@@ -16,7 +16,6 @@ public:
 	WorldMap(::Base::Model::Game &game);
 	virtual ~WorldMap();
 	std::tuple<sf::Uint8, sf::Uint8, sf::Uint8> heightToColour(double height) const;
-	const sf::Sprite &getSprite() const;
 	void render(
 	    ::Base::Model::Game &game,
 	    ::Base::View::Renderer &renderer,

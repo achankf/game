@@ -1,5 +1,5 @@
-#include "base/model/locatable.h"
-#include "base/model/game.h"
+#include "base/model/locatable.hpp"
+#include "base/model/game.hpp"
 using namespace Base::Model;
 
 Locatable::Locatable(Game &game, id_type cid) {

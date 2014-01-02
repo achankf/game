@@ -1,12 +1,12 @@
-#ifndef _game_h_
-#define _game_h_
+#ifndef _base_game_hpp_
+#define _base_game_hpp_
 
 #include <list>
-#include "gamedb.h"
-#include "randgen.h"
-#include "type.h"
-#include "map.h"
-#include "base/view/renderable.h"
+#include "gamedb.hpp"
+#include "randgen.hpp"
+#include "type.hpp"
+#include "map.hpp"
+#include "base/view/renderable.hpp"
 
 namespace Base {
 

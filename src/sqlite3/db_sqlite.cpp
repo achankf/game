@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "db_sqlite.h"
+#include "db_sqlite.hpp"
 
 SQLite3Transaction::SQLite3Transaction(SQLite3Database &db) : db(db) {
 
