@@ -25,11 +25,11 @@ protected:
 public:
 	Game();
 	virtual ~Game() {}
-	const Map &get_map() const;
-	void add_view(::Base::View::Renderable &view);
-	void update_all_views(::Base::View::Renderer &renderer);
+	const Map &getMap() const;
+	void addView(::Base::View::Renderable &view);
+	void updateAllViews(::Base::View::Renderer &renderer);
 
-	id_type get_userid(const char *uid);
+	id_type getUserID(const char *uid);
 };
 
 }

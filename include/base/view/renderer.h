@@ -1,7 +1,7 @@
 #ifndef _renderer_h_
 #define _renderer_h_
 
-#include "../../type.h"
+#include "type.h"
 
 namespace Base {
 namespace Model {
@@ -16,11 +16,13 @@ namespace View {
 
 class Renderer {
 protected:
-	virtual void render_terrain(::Base::Model::Game &game, int i, int j) = 0;
+	virtual void renderUI(::Base::Model::Game &game) = 0;
+	virtual void renderTerrain(::Base::Model::Game &game, int i, int j) = 0;
 public:
 	virtual ~Renderer() {}
-	virtual void render_map(::Base::Model::Game &game) = 0;
-	virtual void render_cursor(::Base::Model::Game &game, ::Base::Control::Cursor &cursor) = 0;
+	virtual void renderMap(::Base::Model::Game &game) = 0;
+	virtual void renderCursor(::Base::Model::Game &game, ::Base::Control::Cursor &cursor) = 0;
+	virtual void renderAll(::Base::Model::Game &game) = 0;
 };
 
 }

@@ -4,16 +4,22 @@
 #include "sfml/view/renderer.h"
 #include <ncurses.h>
 #include <iostream>
+#include <algorithm>
 #include <tuple>
 #include <SFML/Graphics.hpp>
 using namespace SFML::View;
 
 static const int edge_half = 8;
-static const int edge = edge_half << 1;
-static const int edge_twice = edge << 1;
+static const int edge = edge_half * 2;
+static const int edge_twice = edge * 2;
 static const int edge_with_half = edge + edge_half;
 
-Renderer::Renderer() : window(sf::VideoMode(800, 600), "Game", sf::Style::Default, sf::ContextSettings(0,0,2)) {
+Renderer::Renderer(::Base::Model::Game &game)
+	: window(sf::VideoMode(1024, 768), "Game",
+	         sf::Style::Default,
+	         sf::ContextSettings(0,0,2)),
+	worldmap(game) {
+
 	window.setVerticalSyncEnabled(true);
 
 	hexagon.setPointCount(6);
@@ -31,52 +37,49 @@ Renderer::Renderer() : window(sf::VideoMode(800, 600), "Game", sf::Style::Defaul
 Renderer::~Renderer() {
 }
 
-sf::RenderWindow &Renderer::get_window() {
+sf::RenderWindow &Renderer::getWindow() {
 	return this->window;
 }
 
-void Renderer::render_map(::Base::Model::Game &game){
-	const auto &map = game.get_map();
-	for (int i = 0; i < map.getLength(); i++) {
-		for (int j = 0; j < map.getWidth(); j++) {
-			this->render_terrain(game, i,j);
+void Renderer::renderMap(::Base::Model::Game &game) {
+	const auto &map = game.getMap();
+	const auto dim = this->window.getSize();
+	const int dlength = dim.x;
+	const int dwidth = dim.y;
+	const int hfit = std::min(dlength / edge_twice + 1, map.getLength());
+	const int vfit = std::min(dwidth / edge_with_half + 1, map.getWidth());
+
+	for (int i = 0; i < hfit; i++) {
+		for (int j = 0; j < vfit; j++) {
+			const int x = i - j / 2 - 1;
+			const int y = j;
+			this->renderTerrain(game, x, y);
 		}
 	}
 }
 
-void Renderer::render_terrain(::Base::Model::Game &game, int i, int j) {
+void Renderer::renderTerrain(::Base::Model::Game &game, int i, int j) {
 
-	int newi = i * edge_twice;
-	int newj = j * edge_with_half - edge_half;
-
-	const auto &map = game.get_map();
-	auto val = map.get_height(i,j);
-
+	const auto &map = game.getMap();
+	const int newi = i * edge_twice + j * edge;
+	const int newj = j * edge_with_half - edge_half;
+	auto val = map.getHeight(i,j);
 	int r,b,g;
-	if (val < -0.95) r = 0x00, b = 0x60, g = 0x00;
-	else if (val < -0.9) r = 0x00, b = 0x60, g = 0x00;
-	else if (val < -0.7) r = 0x00, b = 0x80, g = 0x00;
-	else if (val < -0.5) r = 0x00, b = 0xa0, g = 0x00;
-	else if (val < -0.2) r = 0x00, b = 0xB0, g = 0x00;
-	else if (val < -0.1) r = 0x00, b = 0xFF, g = 0x00;
-	else if (val < 0.3) r = 0x00, b = 0x00, g = 0x60;
-	else if (val < 0.5) r = 0x80, b = 0x00, g = 0x80;
-	else if (val < 0.7) r = 0x50, b = 0x50, g = 0x50;
-	else if (val < 0.97) r = 0x20, b = 0x20, g = 0x20;
-	else r = 0xff, b = 0xff, g = 0xff;
-
-	if ((j % 2) == 1) newi -= edge;
+	std::tie(r,g,b) = this->worldmap.heightToColour(val);
 	hexagon.setPosition(newi, newj);
 	hexagon.setFillColor(sf::Color(r,g,b));
 	window.draw(hexagon);
 }
 
-void Renderer::render_cursor(::Base::Model::Game &game, ::Base::Control::Cursor &cursor) {
+void Renderer::renderCursor(
+    ::Base::Model::Game &game,
+    ::Base::Control::Cursor &cursor) {
+
 	(void) game;
 	scalar_t x,y,z;
 	std::tie(x,y,z) = cursor;
 
-	int newi = x * edge_twice;
+	int newi = x * edge_twice + y * edge;
 	int newj = y * edge_with_half - edge_half;
 
 	int r,b,g;
@@ -85,4 +88,16 @@ void Renderer::render_cursor(::Base::Model::Game &game, ::Base::Control::Cursor 
 	hexagon.setPosition(newi, newj);
 	hexagon.setFillColor(sf::Color(r,g,b));
 	window.draw(hexagon);
+}
+
+void Renderer::toggleWorldMap() {
+	this->worldmap.toggle();
+}
+
+void Renderer::renderAll(::Base::Model::Game &game) {
+	game.updateAllViews(*this);
+}
+
+void Renderer::renderUI(::Base::Model::Game &game) {
+	(void) game;
 }

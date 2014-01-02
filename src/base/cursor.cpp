@@ -10,17 +10,7 @@ Cursor::Cursor(scalar_t x, scalar_t y, scalar_t z)
 }
 
 void Cursor::render(::Base::Model::Game &game, ::Base::View::Renderer &renderer) {
-	(void)renderer;
-	(void)game;
-	renderer.render_cursor(game, *this);
-}
-
-void Cursor::north() {
-	this->get_y()--;
-}
-
-void Cursor::south() {
-	this->get_y()++;
+	renderer.renderCursor(game, *this);
 }
 
 void Cursor::east() {
@@ -32,22 +22,20 @@ void Cursor::west() {
 }
 
 void Cursor::north_east() {
-	this->north();
+	this->north_west();
 	this->east();
 }
 
 void Cursor::north_west() {
-	this->north();
-	this->west();
+	this->get_y()--;
 }
 
 void Cursor::south_east() {
-	this->south();
-	this->east();
+	this->get_y()++;
 }
 
 void Cursor::south_west() {
-	this->south();
+	this->south_east();
 	this->west();
 }
 

@@ -1,8 +1,9 @@
 #ifndef _renderer_sfml_h_
 #define _renderer_sfml_h_
 
-#include "../../type.h"
-#include "../../base/view/renderer.h"
+#include "type.h"
+#include "base/view/renderer.h"
+#include "sfml/view/worldmap.h"
 #include <SFML/Graphics.hpp>
 
 namespace SFML {
@@ -11,15 +12,20 @@ namespace View {
 class Renderer : public ::Base::View::Renderer {
 	sf::RenderWindow window;
 	sf::ConvexShape hexagon;
+	WorldMap worldmap;
 
+	std::tuple<sf::Uint8, sf::Uint8, sf::Uint8> heightToColour(double height);
 protected:
-	void render_terrain(::Base::Model::Game &game, int i, int j);
+	void renderUI(::Base::Model::Game &game);
+	void renderTerrain(::Base::Model::Game &game, int i, int j);
 public:
-	Renderer();
-	virtual ~Renderer();
-	void render_map(::Base::Model::Game &game);
-	void render_cursor(::Base::Model::Game &game, ::Base::Control::Cursor &cursor);
-	sf::RenderWindow &get_window();
+	Renderer(::Base::Model::Game &game);
+	~Renderer();
+	void renderMap(::Base::Model::Game &game);
+	void renderCursor(::Base::Model::Game &game, ::Base::Control::Cursor &cursor);
+	void toggleWorldMap();
+	void renderAll(::Base::Model::Game &game);
+	sf::RenderWindow &getWindow();
 };
 
 }

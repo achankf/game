@@ -11,9 +11,15 @@ namespace View {
 
 class Renderer;
 
-struct Renderable {
+class Renderable {
+protected:
+	bool show = true;
+public:
 	virtual ~Renderable() {}
 	virtual void render(::Base::Model::Game &game, Renderer &renderer) = 0;
+	void toggle() {
+		show = !show;
+	}
 };
 
 }

@@ -5,7 +5,7 @@
 using namespace Base::Model;
 
 Player::Player(Game &game, const char *uid)
-	: game(game), pid(game.get_userid(uid)) {
+	: game(game), pid(game.getUserID(uid)) {
 
 	std::cout << "Player:" << uid << " has pid:" << pid << std::endl;
 }

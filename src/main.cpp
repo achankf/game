@@ -20,7 +20,7 @@ static void run(int argc, char **argv,
 }
 
 static void runSFML(int argc, char **argv, ::Base::Model::Game &game) {
-	SFML::View::Renderer renderer;
+	SFML::View::Renderer renderer(game);
 	SFML::Control::Controller controller(game, renderer);
 
 	run(argc, argv, game, renderer, controller);

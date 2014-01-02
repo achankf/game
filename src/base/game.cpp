@@ -4,24 +4,26 @@
 #include "gamedb.h"
 using namespace Base::Model;
 
+enum Config {MAP_LENGTH = 700, MAP_WIDTH = 700};
+
 Game::Game()
-	: rando(), db("save.db"), map(rando.next()) {
-	this->add_view(map);
+	: rando(), db("save.db"), map(rando.next(), MAP_LENGTH, MAP_WIDTH) {
+	this->addView(map);
 }
 
-id_type Game::get_userid(const char *uid) {
-	return this->db.get_userid(uid);
+id_type Game::getUserID(const char *uid) {
+	return this->db.getUserID(uid);
 }
 
-const Map &Game::get_map() const {
+const Map &Game::getMap() const {
 	return this->map;
 }
 
-void Game::add_view(::Base::View::Renderable &view) {
+void Game::addView(::Base::View::Renderable &view) {
 	view_lst.push_back(&view);
 }
 
-void Game::update_all_views(::Base::View::Renderer &renderer) {
+void Game::updateAllViews(::Base::View::Renderer &renderer) {
 	for (auto &view_ptr : this->view_lst)
 		view_ptr->render(*this, renderer);
 }

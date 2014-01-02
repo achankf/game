@@ -11,12 +11,12 @@ const char *new_player = "insert into player (uid) values (?)";
 const char *uid_to_pid = "select pid from player where uid = ?";
 }
 
-static void finalize_all(sqlite3_stmt **stmts) {
+static void finalizeAll(sqlite3_stmt **stmts) {
 	for (int i = 0; i < SQL::NUM_QUERIES; i++)
 		sqlite3_finalize(stmts[i]);
 }
 
-void GameDB::setup_mappings() {
+void GameDB::setupMappings() {
 	using namespace SQL;
 	//this->mapping[PLAYER_EXISTS] = player_exists;
 	this->mapping[NEW_PLAYER] = new_player;
@@ -27,7 +27,7 @@ void GameDB::setup_mappings() {
 GameDB::GameDB(const char *file)
 	: SQLite3Database(file) {
 
-	this->setup_mappings();
+	this->setupMappings();
 
 	for (int i = 0; i < SQL::NUM_QUERIES; i++) {
 		size_t length = strlen(this->mapping[i]) + 1;
@@ -35,7 +35,7 @@ GameDB::GameDB(const char *file)
 
 		/* cannot initialize one of the statements */
 		if (rv) {
-			finalize_all(this->stmts);
+			finalizeAll(this->stmts);
 			std::cerr << "Cannot initialize queries" << std::endl;
 			throw std::exception();
 		}
@@ -43,24 +43,24 @@ GameDB::GameDB(const char *file)
 }
 
 GameDB::~GameDB() {
-	finalize_all(this->stmts);
+	finalizeAll(this->stmts);
 }
 
 int GameDB::reset(SQL::Query id) {
 	return sqlite3_reset(stmts[id]);
 }
 
-int GameDB::clear_bindings(SQL::Query id) {
+int GameDB::clearBindings(SQL::Query id) {
 	return sqlite3_clear_bindings(stmts[id]);
 }
 
 int GameDB::reprepare(SQL::Query id) {
 	int rv = this->reset(id);
 	if (rv) return rv;
-	return this->clear_bindings(id);
+	return this->clearBindings(id);
 }
 
-id_type GameDB::get_userid(const char *uid) {
+id_type GameDB::getUserID(const char *uid) {
 
 	if (uid == NULL) {
 		std::cout << "Empty user name" << std::endl;

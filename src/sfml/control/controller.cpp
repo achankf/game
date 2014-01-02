@@ -15,7 +15,7 @@ Controller::Controller(
     ::Base::Model::Game &game,
     ::Base::View::Renderer &renderer
 ) : ::Base::Control::Controller (game, renderer) {
-	game.add_view(cursor);
+	game.addView(cursor);
 }
 
 void Controller::event_loop(
@@ -25,7 +25,7 @@ void Controller::event_loop(
 	(void) player;
 	bool change = true;
 
-	sf::RenderWindow &window = static_cast<::SFML::View::Renderer&>(this->renderer).get_window();
+	sf::RenderWindow &window = this->getRenderer().getWindow();
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
@@ -34,9 +34,9 @@ void Controller::event_loop(
 			else continue;
 			change = true;
 		}
-		if (change){
+		if (change) {
 			window.clear(sf::Color::Black);
-			this->game.update_all_views(this->renderer);
+			this->game.updateAllViews(this->renderer);
 		}
 		window.display();
 		change = false;
@@ -50,12 +50,33 @@ void Controller::handle_key(sf::RenderWindow &window, int c) {
 	}
 
 	switch(c) {
-	case 'q': window.close(); break;
-	case 'w': cursor.north_west(); break;
-	case 'e': cursor.north_east(); break;
-	case 'd': cursor.east(); break;
-	case 'a': cursor.west(); break;
-	case 'z': cursor.south_west(); break;
-	case 'x': cursor.south_east(); break;
+	case 'q':
+		window.close();
+		break;
+	case 'w':
+		this->cursor.north_west();
+		break;
+	case 'e':
+		this->cursor.north_east();
+		break;
+	case 'd':
+		this->cursor.east();
+		break;
+	case 's':
+		this->cursor.west();
+		break;
+	case 'x':
+		this->cursor.south_west();
+		break;
+	case 'c':
+		this->cursor.south_east();
+		break;
+	case 'm':
+		this->getRenderer().toggleWorldMap();
+		break;
 	}
+}
+
+::SFML::View::Renderer &Controller::getRenderer() {
+	return static_cast<::SFML::View::Renderer&>(this->renderer);
 }
