@@ -11,6 +11,8 @@ static void run(int argc, char **argv,
                 Base::View::Renderer &renderer,
                 Base::Control::Controller &controller) {
 
+	std::cout << "Running game" << std::endl;
+
 	(void) renderer;
 	const char *pname = "alfred";
 
@@ -38,6 +40,7 @@ static void setup(int argc, char **argv) {
 }
 
 int main(int argc, char **argv) {
+	std::cout << "Starting game" << std::endl;
 	try {
 		setup(argc, argv);
 	} catch (std::exception &ex) {
