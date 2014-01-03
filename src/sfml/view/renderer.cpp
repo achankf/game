@@ -56,13 +56,13 @@ void Renderer::renderMap(::Base::Model::Game &game) {
 
 void Renderer::renderTerrain(::Base::Model::Game &game, int i, int j) {
 
-	int startx = 20;
-	int starty = 100;
+	scalar_t focusx, focusy ,focusz;
+	std::tie(focusx, focusy, focusz) = this->focus;
 
 	const auto &map = game.getMap();
 	const int newi = i * edge_twice + j * edge;
 	const int newj = j * edge_with_half - edge_half;
-	auto val = map.getHeight(i + startx,j + starty);
+	auto val = map.getHeight(i + focusx,j + focusy);
 	sf::Uint8 r,g,b;
 	std::tie(r,g,b) = this->worldmap.heightToColour(val);
 	hexagon.setPosition(newi, newj);
@@ -78,14 +78,37 @@ void Renderer::renderCursor(
 	scalar_t x,y,z;
 	std::tie(x,y,z) = cursor;
 
-	const int newi = x * edge_twice + y * edge;
-	const int newj = y * edge_with_half - edge_half;
+	scalar_t focusx, focusy ,focusz;
+	std::tie(focusx, focusy, focusz) = this->focus;
+
+	x -= focusx;
+	y -= focusy;
+
+	const auto &map = game.getMap();
+	const scalar_t length = map.getLength();
+	const scalar_t width = map.getWidth();
+
+	if (x < 0) x += length;
+	if (y < 0) y += width;
+
+	int newi1 = x * edge_twice + y * edge;
+	int newj1 = y * edge_with_half - edge_half;
+
+	int newi2 = (x - length) * edge_twice + y * edge;
+	int newj2 = (y - width) * edge_with_half - edge_half;
 
 	sf::Uint8 r,g,b;
 	r = g = b = 0x00;
 
-	hexagon.setPosition(newi, newj);
 	hexagon.setFillColor(sf::Color(r,g,b));
+
+	hexagon.setPosition(newi1, newj1);
+	window.draw(hexagon);
+	hexagon.setPosition(newi2, newj2);
+	window.draw(hexagon);
+	hexagon.setPosition(newi1, newj2);
+	window.draw(hexagon);
+	hexagon.setPosition(newi2, newj1);
 	window.draw(hexagon);
 }
 

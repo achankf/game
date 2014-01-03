@@ -6,7 +6,7 @@ HexCoordinate::HexCoordinate(scalar_t x, scalar_t y, scalar_t z)
 	: coor_t(x,y,z) {
 }
 
-HexCoordinate::~HexCoordinate(){}
+HexCoordinate::~HexCoordinate() {}
 
 void HexCoordinate::east(Game &game) {
 	auto &x = this->get_x();

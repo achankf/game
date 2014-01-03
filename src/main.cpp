@@ -16,7 +16,7 @@ static void run(int argc, char **argv,
 
 	if (argc == 3) pname = argv[2];
 	Base::Model::Player player(game, pname);
-	controller.event_loop(player);
+	controller.eventLoop(player);
 }
 
 static void runSFML(int argc, char **argv, ::Base::Model::Game &game) {

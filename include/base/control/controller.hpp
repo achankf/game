@@ -25,9 +25,7 @@ public:
 	    ::Base::View::Renderer &renderer)
 		: game(game), renderer(renderer) {}
 	virtual ~Controller() {}
-	virtual void event_loop(
-	    ::Base::Model::Player &player
-	) = 0;
+	virtual void eventLoop(::Base::Model::Player &player) = 0;
 };
 
 }

@@ -15,32 +15,43 @@ Controller::Controller(
 	game.addView(cursor);
 }
 
-void Controller::event_loop(
+void Controller::eventLoop(
     ::Base::Model::Player &player
 ) {
 
 	(void) player;
-	bool change = true;
+	bool redraw = true;
 
-	sf::RenderWindow &window = this->getRenderer().getWindow();
+	auto &ren = this->getRenderer();
+	auto &window = ren.getWindow();
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed) window.close();
-			else if (event.type == sf::Event::TextEntered) this->handle_key(window, event.text.unicode);
-			else continue;
-			change = true;
+			switch(event.type) {
+			case sf::Event::Closed:
+				window.close();
+				break;
+			case sf::Event::TextEntered:
+				this->handleInput(window, event.text.unicode);
+				break;
+			case sf::Event::KeyPressed:
+				this->handleKeyPressed();
+				break;
+			default:
+				continue;
+			}
+			redraw = true;
 		}
-		if (change) {
+		if (redraw) {
 			window.clear(sf::Color::Black);
 			this->game.updateAllViews(this->game, this->renderer, *this);
 		}
 		window.display();
-		change = false;
+		redraw = false;
 	}
 }
 
-void Controller::handle_key(sf::RenderWindow &window, int c) {
+void Controller::handleInput(sf::RenderWindow &window, int c) {
 	if (c >= 128) {
 		std::cerr << "Only ASCII is supported" << std::endl;
 		return;
@@ -72,8 +83,28 @@ void Controller::handle_key(sf::RenderWindow &window, int c) {
 		this->getRenderer().toggleWorldMap();
 		break;
 	}
+	scalar_t x, y, z;
+	std::tie(x,y,z) = this->cursor;
+	std::cout << x << ' ' << y << ' ' << z << std::endl;
 }
 
 ::SFML::View::Renderer &Controller::getRenderer() {
 	return static_cast<::SFML::View::Renderer&>(this->renderer);
+}
+
+void Controller::handleKeyPressed() {
+	auto &ren = this->getRenderer();
+	auto &focus = ren.getFocus();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+		focus.west(this->game);
+	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+		focus.east(this->game);
+	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		focus.north_east(this->game);
+		focus.north_west(this->game);
+	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		focus.south_east(this->game);
+		focus.south_west(this->game);
+	}
 }

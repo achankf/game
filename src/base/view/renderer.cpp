@@ -3,6 +3,9 @@
 #include "base/control/controller.hpp"
 using namespace Base::View;
 
+Renderer::Renderer() : focus(0,0,0) {
+}
+
 Renderer::~Renderer() {
 }
 

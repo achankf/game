@@ -13,19 +13,20 @@ class Renderer;
 namespace Control {
 
 class Controller : public ::Base::Control::Controller {
+protected:
+	void handleInput(sf::RenderWindow &window, int c);
+	void handleKeyPressed();
 
 public:
 	Controller(
 	    ::Base::Model::Game &game,
 	    ::Base::View::Renderer &renderer
 	);
-	void event_loop(
+	void eventLoop(
 	    ::Base::Model::Player &player
 	);
 
 	::SFML::View::Renderer &getRenderer();
-
-	void handle_key(sf::RenderWindow &window, int c);
 };
 
 }

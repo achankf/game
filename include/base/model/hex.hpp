@@ -3,8 +3,8 @@
 
 #include "type.hpp"
 
-namespace Base{
-namespace Model{
+namespace Base {
+namespace Model {
 
 class Game;
 

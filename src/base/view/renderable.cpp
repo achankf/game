@@ -18,3 +18,14 @@ void RenderableList::updateAllViews(
 
 RenderableList::~RenderableList() {
 }
+
+::Base::Model::HexCoordinate &Renderer::getFocus() {
+	return this->focus;
+}
+
+bool Renderer::inBound(scalar_t x, scalar_t y, scalar_t z) const {
+	(void) x;
+	(void) y;
+	(void) z;
+	return true;
+}
