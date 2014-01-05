@@ -91,11 +91,11 @@ void Renderer::renderCursor(
 	if (x < 0) x += length;
 	if (y < 0) y += width;
 
-	int newi1 = x * edge_twice + y * edge;
-	int newj1 = y * edge_with_half - edge_half;
+	const int newi1 = x * edge_twice + y * edge;
+	const int newj1 = y * edge_with_half - edge_half;
 
-	int newi2 = (x - length) * edge_twice + y * edge;
-	int newj2 = (y - width) * edge_with_half - edge_half;
+	const int newi2 = (x - length) * edge_twice + y * edge;
+	const int newj2 = (y - width) * edge_with_half - edge_half;
 
 	sf::Uint8 r,g,b;
 	r = g = b = 0x00;
