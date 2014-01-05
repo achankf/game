@@ -4,10 +4,10 @@
 #include "type.hpp"
 #include "base/model/hex.hpp"
 
-constexpr int edge_half = 8;
-constexpr int edge = edge_half * 2;
-constexpr int edge_twice = edge * 2;
-constexpr int edge_with_half = edge + edge_half;
+constexpr int EDGE_HALF = 8;
+constexpr int EDGE = EDGE_HALF * 2;
+constexpr int EDGE_TWICE = EDGE * 2;
+constexpr int EDGE_WITH_HALF= EDGE + EDGE_HALF;
 
 namespace Base {
 

@@ -15,17 +15,17 @@ Renderer::Renderer(::Base::Model::Game &game)
 	         sf::ContextSettings(0,0,2)),
 	worldmap(game) {
 
-	static_assert(edge_half > 0 && edge > 0 && edge_twice > 0 && edge_with_half > 0, "Hexagon edge needs to be longer than 0");
+	static_assert(EDGE_HALF > 0 && EDGE > 0 && EDGE_TWICE > 0 && EDGE_WITH_HALF > 0, "Hexagon EDGE needs to be longer than 0");
 
 	window.setVerticalSyncEnabled(true);
 
 	hexagon.setPointCount(6);
-	hexagon.setPoint(0, sf::Vector2f(edge, 0));
-	hexagon.setPoint(1, sf::Vector2f(edge_twice, edge_half));
-	hexagon.setPoint(2, sf::Vector2f(edge_twice, edge_with_half));
-	hexagon.setPoint(3, sf::Vector2f(edge, edge_twice));
-	hexagon.setPoint(4, sf::Vector2f(0, edge_with_half));
-	hexagon.setPoint(5, sf::Vector2f(0, edge_half));
+	hexagon.setPoint(0, sf::Vector2f(EDGE, 0));
+	hexagon.setPoint(1, sf::Vector2f(EDGE_TWICE, EDGE_HALF));
+	hexagon.setPoint(2, sf::Vector2f(EDGE_TWICE, EDGE_WITH_HALF));
+	hexagon.setPoint(3, sf::Vector2f(EDGE, EDGE_TWICE));
+	hexagon.setPoint(4, sf::Vector2f(0, EDGE_WITH_HALF));
+	hexagon.setPoint(5, sf::Vector2f(0, EDGE_HALF));
 
 	hexagon.setOutlineThickness(1);
 	hexagon.setOutlineColor(sf::Color::Black);
@@ -38,11 +38,11 @@ Renderer::Renderer(::Base::Model::Game &game)
 	this->dlength = dim.x;
 	this->dwidth = dim.y;
 
-	this->hfit_tiles = std::min(dlength / edge_twice + 2, map.getLength());
-	this->vfit_tiles = std::min(dwidth / edge_with_half + 2, map.getWidth());
+	this->hfit_tiles = std::min(dlength / EDGE_TWICE + 2, map.getLength());
+	this->vfit_tiles = std::min(dwidth / EDGE_WITH_HALF + 2, map.getWidth());
 
-	this->hfit = this->hfit_tiles * edge_twice;
-	this->vfit = this->vfit_tiles * edge_with_half;
+	this->hfit = this->hfit_tiles * EDGE_TWICE;
+	this->vfit = this->vfit_tiles * EDGE_WITH_HALF;
 }
 
 sf::RenderWindow &Renderer::getWindow() {
@@ -64,8 +64,8 @@ void Renderer::renderTerrain(::Base::Model::Game &game, int i, int j) {
 	scalar_t focusx, focusy ,focusz;
 	std::tie(focusx, focusy, focusz) = this->focus;
 
-	const int newi = i * edge_twice + j * edge;
-	const int newj = j * edge_with_half - edge_half;
+	const int newi = i * EDGE_TWICE + j * EDGE;
+	const int newj = j * EDGE_WITH_HALF - EDGE_HALF;
 
 	const auto &map = game.getMap();
 	auto val = map.getHeight(i + focusx,j + focusy);
@@ -122,15 +122,17 @@ bool Renderer::inBound(::Base::Model::Game &game, coor_t &normalized_result, sca
 	}
 #endif
 
+std::cout << x << ' ' << y << ' ' << z << std::endl;
+
 	(void) game;
 
 	/* Check whether y coordinate is in-bound */
-	const int newy = y * edge_with_half - edge_half;
-	if (newy < -edge_half || newy > this->vfit) return false;
+	const int newy = y * EDGE_WITH_HALF - EDGE_HALF;
+	if (newy < -EDGE_HALF || newy > this->vfit) return false;
 
 	/* Check whether x coordinate is in-bound */
-	const int newx1 = x * edge_twice + y * edge;
-	const int newx2 = (x - length) * edge_twice + y * edge;
+	const int newx1 = x * EDGE_TWICE + y * EDGE;
+	const int newx2 = (x - length) * EDGE_TWICE + y * EDGE;
 
 	int finx;
 	if (newx1 >= 0 && newx1 <= this->hfit) finx = newx1;
