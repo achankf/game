@@ -1,8 +1,11 @@
-CC = g++
+CC = clang++
+#CC = g++
 INCLUDES = -Iinclude
 CFLAGS = -O0
-CFLAGS += -ffast-math -ffinite-math-only -fno-trapping-math
-CFLAGS += -std=c++11 -pipe -ggdb -Wall -Werror -pedantic -pedantic-errors -Wextra -Winit-self -Wold-style-cast -Woverloaded-virtual -Wuninitialized -Wmissing-declarations
+#CFLAGS += -ffast-math -ffinite-math-only -fno-trapping-math
+CFLAGS += -std=c++11 -pipe -ggdb
+CFLAGS += -Wall -pedantic -pedantic-errors -Wextra -Winit-self -Wold-style-cast -Woverloaded-virtual -Wuninitialized -Wmissing-declarations
+#CFLAGS += -Werror
 CPPFLAGS = $(INCLUDES) -MMD
 LDLIBS += -lncurses -lnoise -lsqlite3 -lsfml-graphics -lsfml-window -lsfml-system
 SOURCES = $(shell find -name "*.cpp")
