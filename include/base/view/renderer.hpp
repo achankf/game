@@ -4,6 +4,11 @@
 #include "type.hpp"
 #include "base/model/hex.hpp"
 
+constexpr int edge_half = 8;
+constexpr int edge = edge_half * 2;
+constexpr int edge_twice = edge * 2;
+constexpr int edge_with_half = edge + edge_half;
+
 namespace Base {
 
 namespace Control {
@@ -28,7 +33,6 @@ public:
 	virtual void renderAll(
 	    ::Base::Model::Game &game,
 	    ::Base::Control::Controller &controller);
-	bool inBound(scalar_t x, scalar_t y, scalar_t z) const;
 	::Base::Model::HexCoordinate &getFocus();
 };
 

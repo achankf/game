@@ -15,3 +15,7 @@ void Renderer::renderAll(
 	game.updateAllViews(game, *this, controller);
 	controller.updateAllViews(game, *this, controller);
 }
+
+::Base::Model::HexCoordinate &Renderer::getFocus() {
+	return this->focus;
+}

@@ -5,6 +5,7 @@
 using namespace Base::Model;
 
 enum Config {MAP_LENGTH = 700, MAP_WIDTH = 700};
+//enum Config {MAP_LENGTH = 20, MAP_WIDTH = 20};
 
 Game::Game()
 	: rando(), db("save.db"), map(rando.next(), MAP_LENGTH, MAP_WIDTH) {
