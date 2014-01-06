@@ -10,9 +10,10 @@ using namespace SFML::Control;
 
 Controller::Controller(
     ::Base::Model::Game &game,
-    ::Base::View::Renderer &renderer
+    ::SFML::View::Renderer &renderer
 ) : ::Base::Control::Controller (game, renderer) {
 	game.addView(cursor);
+	this->addView(renderer.getWorldMap());
 }
 
 void Controller::eventLoop(
@@ -44,7 +45,7 @@ void Controller::eventLoop(
 		}
 		if (redraw) {
 			window.clear(sf::Color::Black);
-			this->game.updateAllViews(this->game, this->renderer, *this);
+			this->invokeRenderAll();
 		}
 		window.display();
 		redraw = false;
@@ -85,7 +86,6 @@ void Controller::handleInput(sf::RenderWindow &window, int c) {
 	}
 	scalar_t x, y, z;
 	std::tie(x,y,z) = this->cursor;
-	std::cout << x << ' ' << y << ' ' << z << std::endl;
 }
 
 ::SFML::View::Renderer &Controller::getRenderer() {
@@ -107,4 +107,9 @@ void Controller::handleKeyPressed() {
 		focus.south_east(this->game);
 		focus.south_west(this->game);
 	}
+}
+
+void Controller::invokeRenderAll() {
+	this->game.updateAllViews(this->game, this->renderer, *this);
+	this->updateAllViews(this->game, this->renderer, *this);
 }

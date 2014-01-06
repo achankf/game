@@ -20,13 +20,14 @@ protected:
 public:
 	Controller(
 	    ::Base::Model::Game &game,
-	    ::Base::View::Renderer &renderer
+	    ::SFML::View::Renderer &renderer
 	);
 	void eventLoop(
 	    ::Base::Model::Player &player
 	);
 
 	::SFML::View::Renderer &getRenderer();
+	void invokeRenderAll();
 };
 
 }

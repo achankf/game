@@ -83,20 +83,10 @@ void Renderer::renderCursor(
     ::Base::Control::Cursor &cursor) {
 
 	scalar_t x,y,z;
-	std::tie(x,y,z) = cursor;
+	std::tie(x,y,z) = this->normalize(cursor);
 
-	scalar_t focusx, focusy ,focusz;
-	std::tie(focusx, focusy, focusz) = this->focus;
-
-	x -= focusx;
-	y -= focusy;
-	z -= focusz;
-
-	const auto &map = game.getMap();
-	const scalar_t length = map.getLength();
-	const scalar_t width = map.getWidth();
-	if (x < 0) x += length;
-	if (y < 0) y += width;
+	if (x < 0) x += this->length;
+	if (y < 0) y += this->width;
 
 	coor_t pos;
 	if (!this->inBound(game, pos, x, y)) return;
@@ -122,8 +112,6 @@ bool Renderer::inBound(::Base::Model::Game &game, coor_t &normalized_result, sca
 	}
 #endif
 
-std::cout << x << ' ' << y << ' ' << z << std::endl;
-
 	(void) game;
 
 	/* Check whether y coordinate is in-bound */
@@ -141,4 +129,8 @@ std::cout << x << ' ' << y << ' ' << z << std::endl;
 
 	normalized_result = coor_t(finx, newy, std::get<2>(normalized_result));
 	return true;
+}
+
+WorldMap &Renderer::getWorldMap() {
+	return this->worldmap;
 }

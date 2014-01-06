@@ -19,3 +19,17 @@ void Renderer::renderAll(
 ::Base::Model::HexCoordinate &Renderer::getFocus() {
 	return this->focus;
 }
+
+coor_t Renderer::normalize(scalar_t x, scalar_t y, scalar_t z) {
+	scalar_t focusx, focusy ,focusz;
+	std::tie(focusx, focusy, focusz) = this->focus;
+
+	x -= focusx;
+	y -= focusy;
+	z -= focusz;
+	return coor_t(x,y,z);
+}
+
+coor_t Renderer::normalize(::Base::Model::HexCoordinate &coor) {
+	return this->normalize(coor.get_x(), coor.get_y(), coor.get_z());
+}

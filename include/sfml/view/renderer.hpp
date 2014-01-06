@@ -3,6 +3,7 @@
 
 #include "type.hpp"
 #include "base/view/renderer.hpp"
+#include "base/view/renderable.hpp"
 #include "sfml/view/worldmap.hpp"
 #include <SFML/Graphics.hpp>
 
@@ -31,6 +32,7 @@ public:
 	void toggleWorldMap();
 	sf::RenderWindow &getWindow();
 	bool inBound(::Base::Model::Game &game, coor_t &normalized_result, scalar_t x, scalar_t y, scalar_t z = -1) const;
+	WorldMap &getWorldMap();
 };
 
 }

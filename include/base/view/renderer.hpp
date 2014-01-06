@@ -34,6 +34,8 @@ public:
 	    ::Base::Model::Game &game,
 	    ::Base::Control::Controller &controller);
 	::Base::Model::HexCoordinate &getFocus();
+	coor_t normalize(::Base::Model::HexCoordinate &coor);
+	coor_t normalize(scalar_t x, scalar_t y, scalar_t z);
 };
 
 }

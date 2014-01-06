@@ -2,7 +2,6 @@
 #define _basemap_hpp_
 
 #include <noise/noise.h>
-#include <utility>
 #include "base/view/renderable.hpp"
 
 namespace Base {
@@ -15,8 +14,6 @@ class Map : public ::Base::View::Renderable {
 	const int length, width;
 
 public:
-	enum TileType {DEEP, SHALLOW, PLAIN, GRASS, HILL, SNOW};
-
 	Map(int seed, int length, int width);
 	double getHeight(int i, int j) const;
 	int getLength() const;
